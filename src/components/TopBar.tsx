@@ -10,14 +10,12 @@ import { useMediaQuery } from 'react-responsive'
 const useStyles = makeStyles((theme) => ({
     headerRow: {
         position: "fixed",
-        top: 0,
         display: "flex",
-        width: "100%",
-        boxSizing: "border-box",
-        height: "6vh",
+        width: "90vw",
+        height: "2rem",
         color: theme.palette.primary.main,
         backgroundColor: theme.palette.background.default,
-        padding: "0vw 5vw 0vh 5vw",
+        padding: "0.5vh 5vw 0.5vh 5vw",
         zIndex: 99,
         justifyContent: "space-between",
         alignItems: "center"
@@ -40,6 +38,7 @@ const styles = {
     largeIcon: {
         width: "1.5rem",
         height: "1.5rem",
+        padding: 0,
     }
 }
 
@@ -74,21 +73,21 @@ function TopBar(props: TopBarProps) {
                     </div>
                 </div>}
 
-            <div style={{ display: "flex", justifyContent: "right" }}>
+            <div style={{ display: "flex", justifyContent: "right", alignContent: "center" }}>
                 <a href="https://www.linkedin.com/in/nsarrazin/" target="_blank" rel="noreferrer">
                     <IconButton
-                        aria-label="linkedin" color="primary">
+                        aria-label="linkedin" color="primary" style={{ padding: "0 1rem" }}>
                         <LinkedInIcon style={styles.largeIcon} />
                     </IconButton>
                 </a>
-                <a href="https://github.com/nsarrazin/" target="_blank" rel="noreferrer">
-                    <IconButton
+                <a href="https://github.com/nsarrazin/" target="_blank" rel="noreferrer" >
+                    <IconButton style={{ padding: "0 1rem" }}
                         aria-label="github" color="primary">
                         <GitHubIcon style={styles.largeIcon} />
                     </IconButton>
                 </a>
                 <a href="mailto:sarrazin.nathan@gmail.com" target="_blank" rel="noreferrer">
-                    <IconButton
+                    <IconButton style={{ padding: "0 1rem" }}
                         aria-label="mailto" color="primary">
                         <MailIcon style={styles.largeIcon} />
                     </IconButton>

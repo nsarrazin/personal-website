@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
-import TopBar from './components/topbar';
-import { responsiveFontSizes } from '@mui/material';
-import { createTheme, ThemeProvider } from '@material-ui/core';
-import { Background } from './components/landing/background';
+import TopBar from './components/TopBar';
+import { createTheme, ThemeProvider, responsiveFontSizes } from '@material-ui/core';
+import { Background } from './components/landing/Background';
+import { Page } from './components/Page';
+import LandingWidget from './components/landing/LandingWidget';
 
 let theme = createTheme({
   palette: {
@@ -20,15 +21,30 @@ let theme = createTheme({
       main: "#9DBEBB",
       dark: "#62938F"
     },
+    text: {
+      primary: "#F4E9CD",
+      secondary: "#9DBEBB"
+    }
   },
+  typography: {
+    fontWeightLight: 800,
+    fontSize: 14
+  }
 });
 
+theme = responsiveFontSizes(theme)
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <TopBar />
-      <Background />
+      <div>
+        <Page>
+          <LandingWidget />
+        </Page>
+        <Page />
+        {/* <Background /> */}
+      </div>
     </ThemeProvider>
   );
 }

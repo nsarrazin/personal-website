@@ -4,11 +4,9 @@ import Particles from 'react-tsparticles';
 
 const useStyles = makeStyles((theme) => ({
     particleBox: {
-        zIndex: -99,
-        position: "fixed",
-        top: "6vh",
         width: "100%",
-        height: "100%"
+        height: "100%",
+        zIndex: -1
     }
 }));
 
@@ -40,8 +38,7 @@ export function Background() {
                 "value": 2
             }
         },
-        "background": { "color": theme.palette.background.default },
-        "fullscreen": true
+        "background": { "color": theme.palette.background.default }
     }
 
     return (
