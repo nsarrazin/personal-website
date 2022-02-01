@@ -1,25 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import TopBar from './components/topbar';
+import { responsiveFontSizes } from '@mui/material';
+import { createTheme, ThemeProvider } from '@material-ui/core';
+import { Background } from './components/landing/background';
+
+let theme = createTheme({
+  palette: {
+    background: {
+      default: "#031926",
+      paper: "#052639"
+    },
+    primary: {
+      main: "#F4E9CD",
+      dark: "#C1B8A2",
+      contrastText: "#031926" //button text white instead of black
+    },
+    secondary: {
+      main: "#9DBEBB",
+      dark: "#62938F"
+    },
+  },
+});
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <TopBar />
+      <Background />
+    </ThemeProvider>
   );
 }
 
