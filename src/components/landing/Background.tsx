@@ -4,6 +4,7 @@ import Particles from 'react-tsparticles';
 
 const useStyles = makeStyles((theme) => ({
     particleBox: {
+        position: "fixed",
         width: "100%",
         height: "100%",
         zIndex: -1

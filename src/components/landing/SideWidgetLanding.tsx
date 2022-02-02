@@ -1,13 +1,18 @@
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core';
 import { Box, Typography } from '@material-ui/core';
+import { ReactComponent as WebdevLogo } from './webdev.svg';
+import { ReactComponent as ComputerLogo } from './computer.svg';
+import { ReactComponent as MagnifyingLogo } from './magnifying.svg';
+import { SelectableIcon } from './SelectableIcon';
+
 
 const useStyles = makeStyles((theme) => ({
     iconHolder: {
         display: "flex",
         flexDirection: "row",
-        alignItems: "space-evenly",
-        justifyItems: "center",
+        alignContent: "space-evenly",
+        justifyContent: "center",
     },
     iconBox: {
         width: "100%",
@@ -32,8 +37,9 @@ export function SideWidgetLanding() {
 
     return <Box>
         <Box className={classes.iconHolder}>
-            <p>big lol</p>
-            <p> lmao </p>
+            <SelectableIcon active={activeBox === 0} icon={WebdevLogo} callback={() => setActiveBox(0)} />
+            <SelectableIcon active={activeBox === 1} icon={ComputerLogo} callback={() => setActiveBox(1)} />
+            <SelectableIcon active={activeBox === 2} icon={MagnifyingLogo} callback={() => setActiveBox(2)} />
         </Box>
     </Box>
 }

@@ -4,19 +4,24 @@ import { makeStyles, useTheme } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
     page: {
         minHeight: "100vh",
-        backgroundColor: theme.palette.background.paper,
         paddingTop: "2rem"
     },
 }));
 
+export interface PageProps {
+    transparent?: true
+    children?: React.ReactNode
+}
 
-export function Page(props: any) {
+export function Page({ transparent, children }: PageProps) {
     const theme = useTheme();
     const classes = useStyles(theme);
 
     return (
-        <div className={classes.page} >
-            {props.children}
-        </div>
+        <div className={classes.page} style={{
+            backgroundColor: transparent ? undefined : theme.palette.background.paper
+        }}>
+            {children}
+        </div >
     )
 };

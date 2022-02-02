@@ -4,7 +4,7 @@ import TopBar from './components/TopBar';
 import { createTheme, ThemeProvider, responsiveFontSizes } from '@material-ui/core';
 import { Background } from './components/landing/Background';
 import { Page } from './components/Page';
-import LandingWidget from './components/landing/LandingWidget';
+import LandingPage from './components/landing/LandingPage';
 
 let theme = createTheme({
   palette: {
@@ -39,11 +39,11 @@ function App() {
     <ThemeProvider theme={theme}>
       <TopBar />
       <div>
-        <Page>
-          <LandingWidget />
+        <Page transparent>
+          <LandingPage />
         </Page>
         <Page />
-        {/* <Background /> */}
+        <Background />
       </div>
     </ThemeProvider>
   );

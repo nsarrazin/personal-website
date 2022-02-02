@@ -14,7 +14,8 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "column",
         flexGrow: 1,
         color: theme.palette.text.primary,
-        marginTop: "10vh"
+        marginTop: "10vh",
+        flexBasis: "0px"
     },
     widgetBox: {
         display: "flex",
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export function LandingWidget() {
+export function LandingPage() {
     const theme = useTheme();
     const classes = useStyles(theme);
 
@@ -43,4 +44,4 @@ export function LandingWidget() {
         </ Box>);
 };
 
-export default LandingWidget;
+export default LandingPage;
