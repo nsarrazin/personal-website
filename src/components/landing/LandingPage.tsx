@@ -4,6 +4,7 @@ import { useMediaQuery } from 'react-responsive'
 import { Background } from './Background';
 import { Box, Typography } from '@material-ui/core';
 import { SideWidgetLanding } from './SideWidgetLanding';
+import { FadeInText } from '../../utils/animations';
 const useStyles = makeStyles((theme) => ({
     container: {
         display: "flex",
@@ -16,11 +17,6 @@ const useStyles = makeStyles((theme) => ({
         color: theme.palette.text.primary,
         marginTop: "10vh",
         flexBasis: "0px"
-    },
-    widgetBox: {
-        display: "flex",
-        flexDirection: "column",
-        flexGrow: 1
     }
 }));
 
@@ -33,12 +29,16 @@ export function LandingPage() {
 
 
     return (
-        <Box className={classes.container} sx={{ flexDirection: isMobile ? "column" : "row" }} >
+        <Box className={classes.container} sx={{ flexDirection: "column" }} >
             <div className={classes.textBox}>
-                <Typography variant="h1">Hey ! I'm Nathan.</Typography>
-                <Typography variant="h4">Find out what I do  here.</Typography>
+                <FadeInText delay={0}>
+                    <Typography variant="h1">Hey ! I'm Nathan.</Typography>
+                </FadeInText>
+                <FadeInText delay={1}>
+                    <Typography variant="h4">Find out more about me here.</Typography>
+                </FadeInText>
             </div>
-            <div className={classes.textBox}>
+            <div className={classes.textBox} style={{ marginTop: isMobile ? "10vh" : "15vh" }}>
                 <SideWidgetLanding />
             </div>
         </ Box>);

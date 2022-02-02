@@ -1,6 +1,8 @@
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core';
 import Particles from 'react-tsparticles';
+import { useMediaQuery } from 'react-responsive'
+
 
 const useStyles = makeStyles((theme) => ({
     particleBox: {
@@ -16,9 +18,13 @@ export function Background() {
     const theme = useTheme();
     const classes = useStyles(theme);
 
+    const isMobile = useMediaQuery({ query: '(max-width: 1224px)' })
 
     let configParticles = {
         "particles": {
+            "number": {
+                "value": isMobile ? 25 : 75
+            },
             "color": {
                 "value": theme.palette.primary.main
             },
@@ -43,13 +49,13 @@ export function Background() {
     }
 
     return (
-        <div className={classes.particleBox}>
+        <div className={classes.particleBox} >
             <Particles
                 id="tsparticles"
                 width={"100vw"}
                 height={"100vh"}
                 options={configParticles}
             />
-        </div>
+        </div >
     )
 }
