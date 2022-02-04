@@ -7,13 +7,13 @@ export interface SelectableIconProps {
     icon: any,
     callback: () => void,
     delay: number,
+    mobile: boolean
 }
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-        margin: "2vh",
+        margin: "2vw",
         marginBottom: "5vh",
-        padding: "5vh",
         borderRadius: "1vh"
     }
 }))
@@ -25,9 +25,9 @@ export function SelectableIcon(props: SelectableIconProps) {
     let color = props.active ? theme.palette.primary.main : theme.palette.secondary.main
     return (
         <FadeInIcon delay={props.delay}>
-            <Paper className={classes.paper}>
-                <IconButton style={{ width: "15vh" }}
-                    onClick={props.callback}>
+            <Paper onClick={props.callback} className={classes.paper} style={{ padding: props.mobile ? "4vw 2vw" : "2vw 4vw" }}>
+                <IconButton style={{ width: props.mobile ? "20vw" : "10vh" }}
+                >
                     <props.icon fill={color} stroke={color} />
                 </IconButton>
             </Paper>

@@ -5,6 +5,7 @@ import { createTheme, ThemeProvider, responsiveFontSizes } from '@material-ui/co
 import { Background } from './components/landing/Background';
 import { Page } from './components/Page';
 import LandingPage from './components/landing/LandingPage';
+import { TimelinePage } from './components/timeline/TimelinePage';
 
 let theme = createTheme({
   palette: {
@@ -42,7 +43,9 @@ function App() {
         <Page transparent>
           <LandingPage />
         </Page>
-        <Page />
+        <Page>
+          <TimelinePage />
+        </Page>
         <Background />
       </div>
     </ThemeProvider>

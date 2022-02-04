@@ -6,6 +6,7 @@ import { ReactComponent as ComputerLogo } from './computer.svg';
 import { ReactComponent as MagnifyingLogo } from './magnifying.svg';
 import { SelectableIcon } from './SelectableIcon';
 import { FadeInText } from '../../utils/animations';
+import { useMediaQuery } from 'react-responsive'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -35,16 +36,17 @@ const titles = ["Web Development", "Simulations Engineering", "And Much More !"]
 export function SideWidgetLanding() {
     const theme = useTheme();
     const classes = useStyles(theme);
+    const isMobile = useMediaQuery({ query: '(max-width: 1224px)' })
 
     const [activeBox, setActiveBox] = React.useState(0);
 
     return <Box>
         <Box className={classes.iconHolder}>
-            <SelectableIcon active={activeBox === 0} icon={WebdevLogo} callback={() => setActiveBox(0)} delay={2} />
-            <SelectableIcon active={activeBox === 1} icon={ComputerLogo} callback={() => setActiveBox(1)} delay={3} />
-            <SelectableIcon active={activeBox === 2} icon={MagnifyingLogo} callback={() => setActiveBox(2)} delay={4} />
+            <SelectableIcon mobile={isMobile} active={activeBox === 0} icon={WebdevLogo} callback={() => setActiveBox(0)} delay={2} />
+            <SelectableIcon mobile={isMobile} active={activeBox === 1} icon={ComputerLogo} callback={() => setActiveBox(1)} delay={3} />
+            <SelectableIcon mobile={isMobile} active={activeBox === 2} icon={MagnifyingLogo} callback={() => setActiveBox(2)} delay={4} />
         </Box>
-        <FadeInText delay={5}>
+        <FadeInText delay={2}>
             <Box className={classes.textBox}>
                 <Typography variant="h3">
                     {titles[activeBox]}
