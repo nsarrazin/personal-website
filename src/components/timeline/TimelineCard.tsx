@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core';
 import { useMediaQuery } from 'react-responsive'
-import { Box, Typography } from '@material-ui/core';
+import { Box, Typography, Paper, Divider } from '@material-ui/core';
 import { ElementTimeline } from '../../types';
 import TimelineItem from '@material-ui/lab/TimelineItem';
 import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
@@ -17,6 +17,19 @@ const useStyles = makeStyles((theme) => ({
         borderColor: theme.palette.primary.main,
         borderWidth: "2px",
         borderStyle: "solid"
+    },
+    paper: {
+        padding: "1rem 0 0.5rem 1rem",
+        margin: "1rem",
+        maxWidth: "30vw",
+        backgroundColor: "#34505f"
+    },
+    fullText: {
+        textAlign: "justify",
+        textJustify: "inter-word",
+        padding: "1rem",
+        paddingTop: "0",
+        fontSize: "90%"
     }
 }));
 
@@ -49,15 +62,22 @@ export function TimelineCard({ el, mobile, first, last }: TimelineCardProps) {
                 </TimelineDot>
                 {!last && <TimelineConnector />}
             </TimelineSeparator>
-            <TimelineContent>
-                <Typography display="inline" variant="h6" style={{ marginRight: "1rem" }}>
-                    {el.title}
-                </Typography>
-                <Typography display="inline" variant="body1" style={{ color: theme.palette.secondary.main }}>
-                    {el.company}
-                </Typography>
-
-                {el.text}
+            <TimelineContent >
+                <Paper className={classes.paper}>
+                    <Typography display="inline" variant="h6" style={{ marginRight: "1rem" }}>
+                        {el.title}
+                    </Typography>
+                    <Typography display="inline" variant="body1" style={{ color: theme.palette.secondary.main }}>
+                        {el.company}
+                    </Typography>
+                    <Typography variant="body2">
+                        {el.shorttext}
+                    </Typography>
+                    {/* <Divider /> */}
+                    <Box className={classes.fullText}>
+                        {el.fulltext}
+                    </Box>
+                </Paper>
             </TimelineContent>
         </TimelineItem>)
 }

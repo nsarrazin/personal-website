@@ -5,6 +5,7 @@ import { Box, Typography } from '@material-ui/core';
 import { Timeline } from '@material-ui/lab';
 import { ElementTimeline } from '../../types';
 import { TimelineCard } from './TimelineCard';
+import { motion } from "framer-motion";
 
 const useStyles = makeStyles((theme) => ({
 }));
@@ -20,9 +21,14 @@ export function TimelineWidget({ els }: TimelineWidgetProps) {
 
     const isMobile = useMediaQuery({ query: '(max-width: 1224px)' })
 
-    return (<Timeline>
-        {els.map((el, idx) => <TimelineCard key={idx} mobile={isMobile} el={el} first={idx === 0} last={idx === els.length - 1} />)}
-    </Timeline>)
+    return (
+        <Box>
+            <Timeline >
+                {els.map((el, idx) => (<motion.div>
+                    <TimelineCard key={idx} mobile={isMobile} el={el} first={idx === 0} last={idx === els.length - 1} />
+                </motion.div>))}
+            </Timeline>
+        </Box>)
 
 
 }

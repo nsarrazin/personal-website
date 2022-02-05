@@ -8,9 +8,10 @@ export interface Skill {
 export interface ElementTimeline {
     title: string,
     company?: string,
-    text: ReactElement,
-    skills?: Array<Skill>,
+    shorttext: string,
+    fulltext: ReactElement,
     start?: string,
     end?: string
     icon?: any
+    skills?: Array<Skill>,
 }

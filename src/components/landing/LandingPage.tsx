@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core';
 import { useMediaQuery } from 'react-responsive'
-import { Background } from './Background';
 import { Box, Typography } from '@material-ui/core';
 import { SideWidgetLanding } from './SideWidgetLanding';
 import { FadeInText } from '../../utils/animations';
@@ -27,7 +26,6 @@ export function LandingPage() {
     const classes = useStyles(theme);
 
     const isMobile = useMediaQuery({ query: '(max-width: 1224px)' })
-
 
     return (
         <Box className={classes.container} sx={{ flexDirection: "column" }} >
