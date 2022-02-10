@@ -1,7 +1,6 @@
 import React from 'react';
-import { makeStyles, useTheme, withStyles } from '@material-ui/core';
-import { useMediaQuery } from 'react-responsive'
-import { Box, Typography, Paper, Divider } from '@material-ui/core';
+import { Hidden, makeStyles, useTheme, withStyles } from '@material-ui/core';
+import { Box, Typography, Paper, Divider, Button } from '@material-ui/core';
 import { ElementTimeline } from '../../types';
 import TimelineItem from '@material-ui/lab/TimelineItem';
 import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
@@ -9,6 +8,8 @@ import TimelineConnector from '@material-ui/lab/TimelineConnector';
 import TimelineContent from '@material-ui/lab/TimelineContent';
 import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import TimelineDot from '@material-ui/lab/TimelineDot';
+import { FadeInTimeline } from '../../utils/animations';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const useStyles = makeStyles((theme) => ({
     dot: {
@@ -19,9 +20,10 @@ const useStyles = makeStyles((theme) => ({
         borderStyle: "solid"
     },
     paper: {
-        padding: "0.5rem 0.5rem 0.5rem 0.5rem",
+        // padding: "0.5rem 0.5rem 0.5rem 0.5rem",
         margin: "1rem 0.5rem 2rem 1rem",
-        maxWidth: "30vw",
+        minWidth: "50vw",
+        width: "100%",
         backgroundColor: "#34505f"
     },
     fullText: {
@@ -47,7 +49,7 @@ export function TimelineCard({ el, mobile, first, last }: TimelineCardProps) {
 
     return (
         <TimelineItem>
-            <TimelineOppositeContent style={{ flex: mobile ? 0 : 1, padding: mobile ? 0 : "6px 16px" }}>
+            <TimelineOppositeContent style={{ flex: mobile ? 0 : 0, padding: mobile ? 0 : "6px 16px" }}>
             </TimelineOppositeContent>
             <TimelineSeparator>
                 {!first && <TimelineConnector />}
@@ -56,29 +58,56 @@ export function TimelineCard({ el, mobile, first, last }: TimelineCardProps) {
                 </TimelineDot>
                 {!last && <TimelineConnector />}
             </TimelineSeparator>
-            <TimelineContent style={{ padding: mobile ? 0 : "6px 16px" }} >
-                <Typography align="left"
-                    variant="body2"
-                    style={{ color: "text.secondary", padding: "0 1rem" }}
-                >
-                    {el.start} - {el.end}
-                </Typography>
+            <FadeInTimeline>
+                <TimelineContent style={{ padding: mobile ? 0 : "6px 16px" }} >
+                    <Typography align="left"
+                        variant="body2"
+                        style={{ color: "text.secondary", padding: "0 1rem" }}
+                    >
+                        {el.start} - {el.end}
+                    </Typography>
 
-                <Paper className={classes.paper} style={{ maxWidth: mobile ? "80vh" : "50vh" }}>
-                    <Typography display="inline" variant="h6" style={{ marginRight: "1rem" }}>
-                        {el.title}
-                    </Typography>
-                    <Typography display="inline" variant="body1" style={{ color: theme.palette.secondary.main }}>
-                        {el.company}
-                    </Typography>
-                    <Typography variant="body2" style={{ padding: "1rem 0 0 1rem " }}>
-                        {el.shorttext}
-                    </Typography>
-                    {/* <Divider /> */}
-                    <Box className={classes.fullText}>
-                        {el.fulltext}
-                    </Box>
-                </Paper>
-            </TimelineContent>
+                    <Paper className={classes.paper} style={{ width: mobile ? "auto" : "30vw" }}>
+                        <Box display="flex" flexDirection="row">
+                            <Box padding="0.5rem" paddingTop="1rem">
+                                <Typography display={mobile ? "initial" : "inline"} variant="h5" style={{ margin: "0 1rem 0 0.5rem" }}>
+                                    {el.title}
+                                </Typography>
+                                <Typography display="inline" variant="body1" style={{ margin: "0 1rem 0 0.5rem", color: theme.palette.secondary.main }}>
+                                    {el.company}
+                                </Typography>
+                                <Typography variant="body2" style={{ padding: mobile ? "1rem 0 0 0.5rem" : "0.5rem 0 0 0" }}>
+                                    {el.shorttext}
+                                </Typography>
+                                <Hidden xsDown>
+                                    <Box className={classes.fullText}>
+                                        {el.fulltext}
+                                    </Box>
+                                </Hidden>
+                                <Hidden xsDown lgUp>
+                                    <Box display="flex" flexDirection="column">
+                                        <Typography variant="body1" align="center">
+                                            Skills
+                                        </Typography>
+                                        <Box display="flex" flexDirection="row" justifyContent="space-evenly" flexWrap="wrap">
+                                            {el.skills?.map((el, idx) => (<Typography display="initial" key={idx} variant="button">
+                                                {el}
+                                            </Typography>))}
+                                        </Box>
+                                    </Box>
+                                </Hidden>
+                            </Box>
+                            <Hidden smUp>
+                                <Divider orientation="vertical" flexItem />
+                                <Button size="small" style={{ minWidth: "2rem" }}>
+                                    <Box display="flex" flexDirection="vertical" alignItems="center" justifyItems="center">
+                                        <ArrowForwardIosIcon style={{ color: theme.palette.secondary.main }} />
+                                    </Box>
+                                </Button>
+                            </Hidden>
+                        </Box>
+                    </Paper>
+                </TimelineContent>
+            </FadeInTimeline>
         </TimelineItem>)
 }

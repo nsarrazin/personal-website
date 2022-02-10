@@ -31,10 +31,10 @@ export function LandingPage() {
         <Box className={classes.container} sx={{ flexDirection: "column" }} >
             <div className={classes.textBox}>
                 <FadeInText delay={0}>
-                    <Typography variant="h1">Hey ! I'm Nathan.</Typography>
+                    <Typography variant="h1">Big text.</Typography>
                 </FadeInText>
                 <FadeInText delay={1}>
-                    <Typography variant="h4">Find out more about me here.</Typography>
+                    <Typography variant="h4">Slightly smaller yet still big text.</Typography>
                 </FadeInText>
             </div>
             <div className={classes.textBox} style={{ marginTop: isMobile ? "10vh" : "15vh" }}>

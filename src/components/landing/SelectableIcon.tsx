@@ -25,8 +25,8 @@ export function SelectableIcon(props: SelectableIconProps) {
     let color = props.active ? theme.palette.primary.main : theme.palette.secondary.main
     return (
         <FadeInIcon delay={props.delay}>
-            <Paper onClick={props.callback} className={classes.paper} style={{ padding: props.mobile ? "4vw 2vw" : "2vw 4vw" }}>
-                <IconButton style={{ width: props.mobile ? "20vw" : "10vh" }}
+            <Paper onClick={props.callback} className={classes.paper} style={{ padding: props.mobile ? "4vw 2vw" : "1vw 2vw" }}>
+                <IconButton style={{ width: props.mobile ? "20vw" : "10vh", maxWidth: "200px" }}
                 >
                     <props.icon fill={color} stroke={color} />
                 </IconButton>
