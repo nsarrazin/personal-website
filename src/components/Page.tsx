@@ -4,7 +4,9 @@ import { makeStyles, useTheme } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
     page: {
         minHeight: "100vh",
-        paddingTop: "2rem"
+        paddingTop: "2rem",
+        paddingLeft: "0",
+        paddingRight: "0"
     },
 }));
 

@@ -8,10 +8,10 @@ let Content: Array<ElementTimeline> = [
         title: "Working Student",
         fulltext:
             <ul>
-                <li>Worked on developing an internal webapp to test new models and monitor product pipelines</li>
-                <li>Contributed to the main product by developing new webapp components</li>
-                <li>Participated in UX research by making Figma mockups and testing them in a B2B setting</li>
-                <li>Performed data analysis on customer data to better identify needs & wants of the customer</li>
+                <li className="bullet">Worked on developing an internal webapp to test new models and monitor product pipelines</li>
+                <li className="bullet">Contributed to the main product by developing new webapp components</li>
+                <li className="bullet">Participated in UX research by making Figma mockups and testing them in a B2B setting</li>
+                <li className="bullet">Performed data analysis on customer data to better identify needs & wants of the customer</li>
 
             </ul>,
         shorttext: "Working student doing webdev and data analysis",
@@ -24,10 +24,10 @@ let Content: Array<ElementTimeline> = [
         title: "Working Student",
         fulltext:
             <ul>
-                <li>Worked on developing an internal webapp to test new models and monitor product pipelines</li>
-                <li>Contributed to the main product by developing new webapp components</li>
-                <li>Participated in UX research by making Figma mockups and testing them in a B2B setting</li>
-                <li>Performed data analysis on customer data to better identify needs & wants of the customer</li>
+                <li className="bullet">Worked on developing an internal webapp to test new models and monitor product pipelines</li>
+                <li className="bullet">Contributed to the main product by developing new webapp components</li>
+                <li className="bullet">Participated in UX research by making Figma mockups and testing them in a B2B setting</li>
+                <li className="bullet">Performed data analysis on customer data to better identify needs & wants of the customer</li>
 
             </ul>,
         shorttext: "Working student doing webdev and data analysis",
@@ -40,10 +40,10 @@ let Content: Array<ElementTimeline> = [
         title: "Working Student",
         fulltext:
             <ul>
-                <li>Worked on developing an internal webapp to test new models and monitor product pipelines</li>
-                <li>Contributed to the main product by developing new webapp components</li>
-                <li>Participated in UX research by making Figma mockups and testing them in a B2B setting</li>
-                <li>Performed data analysis on customer data to better identify needs & wants of the customer</li>
+                <li className="bullet">Worked on developing an internal webapp to test new models and monitor product pipelines</li>
+                <li className="bullet">Contributed to the main product by developing new webapp components</li>
+                <li className="bullet">Participated in UX research by making Figma mockups and testing them in a B2B setting</li>
+                <li className="bullet">Performed data analysis on customer data to better identify needs & wants of the customer</li>
 
             </ul>,
         shorttext: "Working student doing webdev and data analysis",

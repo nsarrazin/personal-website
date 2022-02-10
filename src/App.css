@@ -1,3 +1,8 @@
-li { padding: 0.3rem 0px 0px; }
-li:first-child { margin-top: 0px; }
+.bullet {
+    padding: 0.5rem 0px 0.5rem 0px;
+    list-style-position: outside; }
+
+.bullet:first-child { 
+    margin-top: 0px; 
+}
 ul { padding: 0.5rem 0px 0px}

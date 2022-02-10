@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
     },
     textBox: {
         display: "flex",
-        alignItems: "center",
         flexDirection: "column",
         padding: "0 3vw"
     }
@@ -47,7 +46,7 @@ export function SideWidgetLanding() {
             <SelectableIcon mobile={isMobile} active={activeBox === 2} icon={MagnifyingLogo} callback={() => setActiveBox(2)} delay={4} />
         </Box>
         <FadeInText delay={2}>
-            <Box className={classes.textBox}>
+            <Box className={classes.textBox} sx={{ alignItems: isMobile ? "left" : "center" }}>
                 <Typography variant="h3">
                     {titles[activeBox]}
                 </Typography>

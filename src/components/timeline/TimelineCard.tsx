@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core';
+import { makeStyles, useTheme, withStyles } from '@material-ui/core';
 import { useMediaQuery } from 'react-responsive'
 import { Box, Typography, Paper, Divider } from '@material-ui/core';
 import { ElementTimeline } from '../../types';
@@ -19,8 +19,8 @@ const useStyles = makeStyles((theme) => ({
         borderStyle: "solid"
     },
     paper: {
-        padding: "1rem 0 0.5rem 1rem",
-        margin: "1rem",
+        padding: "0.5rem 0.5rem 0.5rem 0.5rem",
+        margin: "1rem 0.5rem 2rem 1rem",
         maxWidth: "30vw",
         backgroundColor: "#34505f"
     },
@@ -47,13 +47,7 @@ export function TimelineCard({ el, mobile, first, last }: TimelineCardProps) {
 
     return (
         <TimelineItem>
-            <TimelineOppositeContent>
-                <Typography align="right"
-                    variant="body2"
-                    style={{ color: "text.secondary" }}
-                >
-                    {el.start} - {el.end}
-                </Typography>
+            <TimelineOppositeContent style={{ flex: mobile ? 0 : 1, padding: mobile ? 0 : "6px 16px" }}>
             </TimelineOppositeContent>
             <TimelineSeparator>
                 {!first && <TimelineConnector />}
@@ -62,15 +56,22 @@ export function TimelineCard({ el, mobile, first, last }: TimelineCardProps) {
                 </TimelineDot>
                 {!last && <TimelineConnector />}
             </TimelineSeparator>
-            <TimelineContent >
-                <Paper className={classes.paper}>
+            <TimelineContent style={{ padding: mobile ? 0 : "6px 16px" }} >
+                <Typography align="left"
+                    variant="body2"
+                    style={{ color: "text.secondary", padding: "0 1rem" }}
+                >
+                    {el.start} - {el.end}
+                </Typography>
+
+                <Paper className={classes.paper} style={{ maxWidth: mobile ? "80vh" : "50vh" }}>
                     <Typography display="inline" variant="h6" style={{ marginRight: "1rem" }}>
                         {el.title}
                     </Typography>
                     <Typography display="inline" variant="body1" style={{ color: theme.palette.secondary.main }}>
                         {el.company}
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography variant="body2" style={{ padding: "1rem 0 0 1rem " }}>
                         {el.shorttext}
                     </Typography>
                     {/* <Divider /> */}

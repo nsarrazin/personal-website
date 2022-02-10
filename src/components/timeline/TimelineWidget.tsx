@@ -22,13 +22,15 @@ export function TimelineWidget({ els }: TimelineWidgetProps) {
     const isMobile = useMediaQuery({ query: '(max-width: 1224px)' })
 
     return (
-        <Box>
-            <Timeline >
-                {els.map((el, idx) => (<motion.div>
-                    <TimelineCard key={idx} mobile={isMobile} el={el} first={idx === 0} last={idx === els.length - 1} />
-                </motion.div>))}
+        <Box margin={0} padding={0}>
+            <Timeline align={isMobile ? "left" : "alternate"} >
+                {
+                    els.map((el, idx) => (<motion.div key={idx}>
+                        <TimelineCard mobile={isMobile} el={el} first={idx === 0} last={idx === els.length - 1} />
+                    </motion.div>))
+                }
             </Timeline>
-        </Box>)
+        </Box >)
 
 
 }

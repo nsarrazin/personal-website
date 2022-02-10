@@ -8,7 +8,7 @@ import { Timeline } from './Timeline';
 const useStyles = makeStyles((theme) => ({
     container: {
         display: "flex",
-        padding: "0 5vw"
+        padding: "0 2vw"
     },
     textBox: {
         display: "flex",
@@ -32,10 +32,10 @@ export function TimelinePage() {
         <Box className={classes.container} sx={{ flexDirection: "column" }} >
             <div className={classes.textBox}>
                 <FadeInText delay={0}>
-                    <Typography variant="h2">Here's a quick history of what I did.</Typography>
+                    <Typography variant="h2" style={{ padding: "0 3vw" }}>Here's a quick history of what I did.</Typography>
                 </FadeInText>
             </div>
-            <div className={classes.textBox} style={{ marginTop: isMobile ? "vh" : "15vh" }}>
+            <div className={classes.textBox} style={{ marginTop: isMobile ? "5vh" : "15vh" }}>
                 <Timeline />
             </div>
         </ Box>);
