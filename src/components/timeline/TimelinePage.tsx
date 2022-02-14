@@ -35,7 +35,7 @@ export function TimelinePage() {
                     <Typography variant="h2" style={{ padding: "0 3vw" }}>A different big text.</Typography>
                 </FadeInText>
             </div>
-            <div className={classes.textBox} style={{ marginTop: isMobile ? "5vh" : "15vh" }}>
+            <div className={classes.textBox} style={{ marginTop: isMobile ? "5vh" : "10vh" }}>
                 <Timeline />
             </div>
         </ Box>);

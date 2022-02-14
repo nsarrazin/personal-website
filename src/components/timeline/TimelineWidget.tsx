@@ -12,10 +12,11 @@ const useStyles = makeStyles((theme) => ({
 
 export interface TimelineWidgetProps {
     els: Array<ElementTimeline>
+    callback: (arg: Array<string>) => void;
 }
 
 
-export function TimelineWidget({ els }: TimelineWidgetProps) {
+export function TimelineWidget({ els, callback }: TimelineWidgetProps) {
     const theme = useTheme();
     const classes = useStyles(theme);
 
@@ -26,7 +27,7 @@ export function TimelineWidget({ els }: TimelineWidgetProps) {
             <Timeline align={isMobile ? "left" : "alternate"} >
                 {
                     els.map((el, idx) => (<motion.div key={idx}>
-                        <TimelineCard mobile={isMobile} el={el} first={idx === 0} last={idx === els.length - 1} />
+                        <TimelineCard mobile={isMobile} el={el} first={idx === 0} last={idx === els.length - 1} callback={callback} />
                     </motion.div>))
                 }
             </Timeline>

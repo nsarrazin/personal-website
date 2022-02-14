@@ -46,6 +46,7 @@ function App() {
         <Page>
           <TimelinePage />
         </Page>
+
         <Background />
       </div>
     </ThemeProvider>

@@ -19,16 +19,23 @@ export function Timeline() {
 
     const isMobile = useMediaQuery({ query: '(max-width: 1224px)' })
 
-    const skillList = new Set(Content.map((el) => (el.skills)).flat().filter(el => el !== undefined))
+    // I can tell you I don't have money. 
+    // But what I do have are a very particular
+    const setOfSkills = new Set(Content.map((el) => (el.skills)).flat())
+    // I have acquired over a very long career. 
+    // Skills that make me a nightmare for people like you.
+    const [actives, setActives] = React.useState<Array<string>>([]);
+
+    const arraySkills = Array.from(setOfSkills).filter((el): el is string => !!el)
 
     return <Grid container spacing={2}>
         <Hidden smDown>
             <Grid item md={4}>
-                <Skills />
+                <Skills skillList={arraySkills} activeSkills={actives} />
             </Grid>
         </Hidden>
         <Grid item xs={12} md={8}>
-            <TimelineWidget els={Content} />
+            <TimelineWidget els={Content} callback={setActives} />
         </Grid>
     </Grid>
 }

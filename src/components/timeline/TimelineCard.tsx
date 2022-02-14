@@ -1,5 +1,5 @@
 import React from 'react';
-import { Hidden, makeStyles, useTheme, withStyles } from '@material-ui/core';
+import { Hidden, makeStyles, ThemeProvider, useTheme, withStyles } from '@material-ui/core';
 import { Box, Typography, Paper, Divider, Button } from '@material-ui/core';
 import { ElementTimeline } from '../../types';
 import TimelineItem from '@material-ui/lab/TimelineItem';
@@ -22,9 +22,11 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         // padding: "0.5rem 0.5rem 0.5rem 0.5rem",
         margin: "1rem 0.5rem 2rem 1rem",
+        padding: "5px",
         minWidth: "50vw",
         width: "100%",
-        backgroundColor: "#34505f"
+        backgroundColor: "#34505f",
+        borderRadius: "0.25rem"
     },
     fullText: {
         textAlign: "justify",
@@ -32,6 +34,12 @@ const useStyles = makeStyles((theme) => ({
         padding: "1rem",
         paddingTop: "0",
         fontSize: "90%"
+    },
+    hover: {
+        borderStyle: "solid",
+        bordercolor: theme.palette.primary.main,
+        borderWidth: "5px",
+        padding: "0"
     }
 }));
 
@@ -39,14 +47,26 @@ export interface TimelineCardProps {
     el: ElementTimeline
     mobile: boolean
     first: boolean
-    last: boolean
+    last: boolean,
+    callback: (arg: Array<string>) => void;
 }
 
 
-export function TimelineCard({ el, mobile, first, last }: TimelineCardProps) {
+export function TimelineCard({ el, mobile, first, last, callback }: TimelineCardProps) {
     const theme = useTheme();
     const classes = useStyles(theme);
 
+    const [hover, setHover] = React.useState<boolean>(false);
+
+    function onEnter() {
+        setHover(true);
+        callback(el.skills ?? [""]);
+    }
+
+    function onLeave() {
+        setHover(false);
+        callback([]);
+    }
     return (
         <TimelineItem>
             <TimelineOppositeContent style={{ flex: mobile ? 0 : 0, padding: mobile ? 0 : "6px 16px" }}>
@@ -67,7 +87,12 @@ export function TimelineCard({ el, mobile, first, last }: TimelineCardProps) {
                         {el.start} - {el.end}
                     </Typography>
 
-                    <Paper className={classes.paper} style={{ width: mobile ? "auto" : "30vw" }}>
+                    <Paper
+                        className={[classes.paper, hover ? classes.hover : ''].join(' ')}
+                        style={{ width: mobile ? "auto" : "30vw" }}
+                        onMouseEnter={onEnter}
+                        onMouseLeave={onLeave}
+                        elevation={hover ? 5 : 0}>
                         <Box display="flex" flexDirection="row">
                             <Box padding="0.5rem" paddingTop="1rem">
                                 <Typography display={mobile ? "initial" : "inline"} variant="h5" style={{ margin: "0 1rem 0 0.5rem" }}>
