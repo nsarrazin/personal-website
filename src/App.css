@@ -1,8 +1,34 @@
 .bullet {
-    padding: 0.5rem 0px 0.5rem 0px;
-    list-style-position: outside; }
+    padding: 0.1rem 0px 0.5rem 0px;
+    list-style-position: outside; 
+    font-weight:500;
+    font-size:small;
+}
+
+@media only screen and (max-width: 600px) {
+    .bullet { 
+        font-size:10
+    }
+}
 
 .bullet:first-child { 
     margin-top: 0px; 
 }
-ul { padding: 0.5rem 0px 0px}
+
+ul { padding: 0.5rem 0px;
+     margin: 0}
+
+.floating {  
+animation-name: floating;
+animation-duration: 3s;
+animation-iteration-count: infinite;
+animation-timing-function: ease-in-out;
+margin-left: 30px;
+margin-top: 5px;
+}
+
+@keyframes floating {
+from { transform: translate(0,  0px); }
+65%  { transform: translate(0, 1rem); }
+to   { transform: translate(0, -0px); }    
+}

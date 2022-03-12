@@ -1,42 +1,46 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core';
+import { Grid, Hidden, makeStyles, useTheme } from '@material-ui/core';
 import { useMediaQuery } from 'react-responsive'
 import { Box, Typography } from '@material-ui/core';
-import { FadeInText } from '../../utils/animations';
-import { Timeline } from './Timeline';
-
+import { TimelineWidget } from './TimelineWidget';
+import { Skills } from './Skills';
+import Content from './Content';
 const useStyles = makeStyles((theme) => ({
-    container: {
-        display: "flex",
-        padding: "0 2vw"
-    },
-    textBox: {
-        display: "flex",
-        flexDirection: "column",
-        flexGrow: 1,
-        color: theme.palette.text.primary,
-        marginTop: "5vh",
-        flexBasis: "0px"
-    }
 }));
 
 
-export function TimelinePage() {
+export interface TimelinePageProps {
+    refProp: any
+}
+
+
+export function TimelinePage({ refProp }: TimelinePageProps) {
     const theme = useTheme();
     const classes = useStyles(theme);
 
-    const isMobile = useMediaQuery({ query: '(max-width: 1224px)' })
+    // I can tell you I don't have money. 
+    // But what I do have are a very particular
+    const setOfSkills = new Set(Content.slice().reverse().map((el) => (el.skills)).flat())
+    // I have acquired over a very long career. 
+    // Skills that make me a nightmare for people like you.
+    const [actives, setActives] = React.useState<Array<string>>([]);
 
+    const arraySkills = Array.from(setOfSkills).filter((el): el is string => !!el)
 
     return (
-        <Box className={classes.container} sx={{ flexDirection: "column" }} >
-            <div className={classes.textBox}>
-                <FadeInText delay={0}>
-                    <Typography variant="h2" style={{ padding: "0 3vw" }}>A different big text.</Typography>
-                </FadeInText>
-            </div>
-            <div className={classes.textBox} style={{ marginTop: isMobile ? "5vh" : "10vh" }}>
-                <Timeline />
-            </div>
-        </ Box>);
-};
+        <div ref={refProp}>
+            <Grid container spacing={0}>
+                <Hidden mdDown>
+                    <Grid item lg={4}>
+                        <div style={{ marginTop: "3rem", position: "sticky" }} />
+                        <Skills skillList={arraySkills} activeSkills={actives} />
+                    </Grid>
+                </Hidden>
+                <Grid item xs={12} lg={8}>
+                    <div style={{ marginTop: "3rem", position: "sticky" }} />
+                    <TimelineWidget els={Content} callback={setActives} />
+                </Grid>
+            </Grid>
+        </div>
+    );
+}

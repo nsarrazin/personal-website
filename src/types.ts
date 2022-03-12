@@ -5,8 +5,14 @@ export interface ElementTimeline {
     company?: string,
     shorttext: string,
     fulltext: ReactElement,
-    start?: string,
-    end?: string
+    date?: string,
     icon?: any
     skills?: Array<string>,
+}
+export interface Project {
+    title: string
+    text: string,
+    href: string,
+    button: string,
+    image: string,
 }

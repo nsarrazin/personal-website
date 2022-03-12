@@ -23,12 +23,17 @@ export function TimelineWidget({ els, callback }: TimelineWidgetProps) {
     const isMobile = useMediaQuery({ query: '(max-width: 1224px)' })
 
     return (
-        <Box margin={0} padding={0}>
-            <Timeline align={isMobile ? "left" : "alternate"} >
+        <Box margin={0} padding={0} paddingBottom={5} style={{ backgroundColor: theme.palette.background.paper }}>
+            <Typography variant="h2" style={{ color: theme.palette.primary.dark, textAlign: isMobile ? "center" : "left", padding: isMobile ? "3rem 0.5rem" : "8rem 0 7rem 1rem" }}>
+                {!isMobile ? "and experiences." : "Here are some things I did."}
+            </Typography>
+
+            <Timeline align="left" style={{ margin: 0 }} >
                 {
-                    els.map((el, idx) => (<motion.div key={idx}>
-                        <TimelineCard mobile={isMobile} el={el} first={idx === 0} last={idx === els.length - 1} callback={callback} />
-                    </motion.div>))
+                    els.map((el, idx) => (
+                        <motion.div key={idx}>
+                            <TimelineCard mobile={isMobile} el={el} first={idx === 0} last={idx === els.length - 1} callback={callback} />
+                        </motion.div>))
                 }
             </Timeline>
         </Box >)

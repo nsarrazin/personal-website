@@ -7,9 +7,9 @@ import { useMediaQuery } from 'react-responsive'
 const useStyles = makeStyles((theme) => ({
     particleBox: {
         position: "fixed",
-        width: "100%",
-        height: "100%",
-        zIndex: -1
+        width: "100vw",
+        height: "100vh",
+        zIndex: -2
     }
 }));
 
