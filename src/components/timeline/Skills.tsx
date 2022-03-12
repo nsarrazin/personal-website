@@ -5,7 +5,6 @@ import { Box, Typography, Paper } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-        // margin: "1rem 0.5rem 2rem 1rem",
         height: "100%",
         backgroundColor: theme.palette.primary.dark,
         borderRadius: 0
