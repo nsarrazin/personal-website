@@ -23,7 +23,7 @@ export function Background() {
     let configParticles = {
         "particles": {
             "number": {
-                "value": isMobile ? 25 : 75
+                "value": isMobile ? 25 : 70
             },
             "color": {
                 "value": theme.palette.primary.main
@@ -33,7 +33,7 @@ export function Background() {
                     "value": theme.palette.secondary.main
                 },
                 "enable": true,
-                "opacity": 0.5
+                "opacity": 0.8
             },
             "move": {
                 "enable": true
