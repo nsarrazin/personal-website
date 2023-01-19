@@ -10,16 +10,38 @@ import SettingsIcon from '@mui/icons-material/Settings';
 
 let Content: Array<ElementTimeline> = [
     {
-        title: "Student Software Engineer",
+        title: "Full-Stack Developer",
         fulltext:
             <ul>
-                <li className="bullet">Worked on developing an internal webapp to test new models and monitor product pipelines</li>
-                <li className="bullet">Contributed to the main product by developing new webapp components</li>
-                <li className="bullet">Participated in UX research by making Figma mockups and testing them in a B2B setting</li>
-                <li className="bullet">Performed data analysis on customer data to better identify needs & wants of the customer</li>
-
+                <li className="bullet">Collaborated  in a product team following ShapeUp principles, in order to deliver features and modernize the product.</li>
+                <li style={{listStyleType:'none', marginLeft:"20px", marginTop:"-10px"}}>
+                    <ul>
+                    <li className="bullet">Lead the front-end effort to rewrite the flagship product of the company, used by 1000+ users, decreasing time to First Contentful Paint (FCP) by 80% to below 1s</li>
+                    <li className="bullet">Delivered new onboarding wizards resulting in 50% less manual work for onboarding new users</li>
+                    <li className="bullet">Teamed up with designers & product owners to shape work packages using Shape Up,  then delivered features using React and TypeScript with a Django backend.</li>
+                    <li className="bullet">Advocated for front-end best practices within the team, through pair programming and reviews</li>
+                    </ul>
+                </li>
+                <li className="bullet">Overhauled the front-end toolchain of the company, bringing in features such as TypeScript, ES6, bundling, linting and automated CI/CD</li>
+                <li className="bullet">Took ownership as a solo dev of a portfolio management project for the biggest client of the company, and delivered the app under time constraints,  helping to close new deals with the customer </li>
             </ul>,
-        shorttext: "Working student doing webdev, data analysis and a bit of UX for an AgriTech startup.",
+        shorttext: "Working as a fullstack dev for a PropTech scale-up, building features & modernizing a SaaS sustainability app for real-estate customers.",
+        company: "hello energy",
+        date: "2022 - Now",
+        icon: LocationCityIcon,
+        skills: ["Python", "React", "JavaScript", "TypeScript", "CI/CD", "Docker", "AWS", "Django", "Figma", "HTML/CSS", "Webpack"]
+    },
+
+    {
+        title: "Part-Time Software Engineer",
+        fulltext:
+            <ul>
+                <li className="bullet">Delivered an internal web app used to test new predictive models and monitor product pipelines</li>
+                <li className="bullet">Developed new dashboard components in the core product using React, TypeScript and CSS</li>
+                <li className="bullet">Improved the PDF report generation pipeline of the company in Python</li>
+                <li className="bullet">Participated in UX research by making mockups in Figma and testing them in a B2B setting</li>
+            </ul>,
+        shorttext: "Employed part-time doing webdev, data analysis, building models and a bit of UX for an AgriTech startup.",
         company: "VanBoven",
         date: "2020 - 2022",
         icon: LaptopMacIcon,
@@ -41,27 +63,13 @@ let Content: Array<ElementTimeline> = [
         skills: ["Python", "Numpy", "Numba", "matplotlib", "plotly", "Qt5"]
     },
     {
-        title: "Technical Assistant",
-        fulltext:
-            <ul>
-                <li className="bullet">Overhauled the townhall's physical and digital archival procedures based on French legislation.</li>
-                <li className="bullet">Implemented automatic archival using custom OCR Python scripts.</li>
-
-            </ul>,
-        shorttext: "Helped the town with archives and network administration.",
-        company: "Voulangis City Hall",
-        date: "July - August 2019",
-        icon: LocationCityIcon,
-        skills: ["Python"]
-    },
-    {
         title: "HackDelft 2019",
         fulltext:
             <ul>
-                <li className="bullet">Built the interface to interact with the trading API.</li>
-                <li className="bullet">Implemented the backend to the bot's user interface.</li>
+                <li className="bullet">Built the interface layer to interact with a stock trading API.</li>
+                <li className="bullet">Implemented the backend used by the bot's user interface to schedule decisions.</li>
             </ul>,
-        shorttext: "Built an interactive trading bot for a hackathon.",
+        shorttext: "Built an interactive trading bot for a hackathon. Placed 2nd in the category.",
         company: "MLH",
         date: "May 2019",
         icon: CoffeeIcon,
@@ -71,7 +79,6 @@ let Content: Array<ElementTimeline> = [
         title: "BSc. Aerospace Engineering",
         fulltext:
             <ul>
-                <li className="bullet">Took relevant quantitative courses such as Data Analysis, programming in Python and Probability & Statistics. </li>
                 <li className="bullet">Contributed to five group projects where teamwork, clear communication and setting priorities were critical to our success.</li>
                 <li className="bullet">Wrote a Python module to analyze wearing-out of aircraft tires from noisy sensor data.</li>
             </ul>,

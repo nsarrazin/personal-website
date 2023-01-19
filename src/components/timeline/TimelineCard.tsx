@@ -1,193 +1,306 @@
-import React from 'react';
-import { Hidden, makeStyles, useTheme, Modal } from '@material-ui/core';
-import { Box, Typography, Paper, Divider, Button, Fade } from '@material-ui/core';
-import { ElementTimeline } from '../../types';
-import TimelineItem from '@material-ui/lab/TimelineItem';
-import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
-import TimelineConnector from '@material-ui/lab/TimelineConnector';
-import TimelineContent from '@material-ui/lab/TimelineContent';
-import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
-import TimelineDot from '@material-ui/lab/TimelineDot';
-import { FadeInTimeline } from '../../utils/animations';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import Backdrop from '@mui/material/Backdrop';
-import { borderColor } from '@mui/system';
+import React from "react";
+import { makeStyles, useTheme, Modal } from "@material-ui/core";
+import {
+  Box,
+  Typography,
+  Paper,
+  Divider,
+  Button,
+  Fade,
+} from "@material-ui/core";
+import { ElementTimeline } from "../../types";
+import TimelineItem from "@material-ui/lab/TimelineItem";
+import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
+import TimelineConnector from "@material-ui/lab/TimelineConnector";
+import TimelineContent from "@material-ui/lab/TimelineContent";
+import TimelineOppositeContent from "@material-ui/lab/TimelineOppositeContent";
+import TimelineDot from "@material-ui/lab/TimelineDot";
+import { FadeInTimeline } from "../../utils/animations";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { useMediaQuery } from "react-responsive";
 
 const useStyles = makeStyles((theme) => ({
-    dot: {
-        backgroundColor: theme.palette.background.paper,
-        color: theme.palette.primary.main,
-        borderColor: theme.palette.primary.main,
-        borderWidth: "2px",
-        borderStyle: "solid",
-
-    },
-    paper: {
-        margin: "0.1rem 0.5rem 0.5rem 0.5rem",
-        padding: "2px",
-        minWidth: "50vw",
-        width: "100%",
-        backgroundColor: "#777",
-        borderRadius: "0.25rem",
-        borderStyle: "solid",
-        borderWidth: "2px",
-        borderColor: "#777",
-        transition: "border-color 0.3s",
-        transitionTimingFunction: "ease-out",
-        boxSizing: "border-box"
-
-    },
-    fullText: {
-        textAlign: "justify",
-        textJustify: "inter-word",
-        padding: "0 1rem",
-        fontSize: "100%"
-    },
-    hover: {
-        borderColor: theme.palette.primary.main,
-
-    },
-    modalPaper: {
-        margin: "auto 7vw",
-        minHeight: "40vh",
-        maxHeight: "90vh",
-        padding: "1rem 1.3rem",
-    }
+  dot: {
+    backgroundColor: theme.palette.background.paper,
+    color: theme.palette.primary.main,
+    borderColor: theme.palette.primary.main,
+    borderWidth: "2px",
+    borderStyle: "solid",
+  },
+  paper: {
+    margin: "0.1rem 0.5rem 0.5rem 0.5rem",
+    padding: "2px",
+    minWidth: "50vw",
+    width: "100%",
+    backgroundColor: "#777",
+    borderRadius: "0.25rem",
+    borderStyle: "solid",
+    borderWidth: "2px",
+    borderColor: "#777",
+    transition: "border-color 0.3s",
+    transitionTimingFunction: "ease-out",
+    boxSizing: "border-box",
+  },
+  fullText: {
+    padding: "0 1rem",
+    fontSize: "100%",
+  },
+  hover: {
+    borderColor: theme.palette.primary.main,
+  },
+  modalPaper: {
+    margin: "auto 7vw",
+    minHeight: "40vh",
+    maxHeight: "90vh",
+    padding: "1rem 1.3rem",
+  },
 }));
 
 export interface TimelineCardProps {
-    el: ElementTimeline
-    mobile: boolean
-    first: boolean
-    last: boolean,
-    callback: (arg: Array<string>) => void;
+  el: ElementTimeline;
+  mobile: boolean;
+  first: boolean;
+  last: boolean;
+  callback: (arg: Array<string>) => void;
 }
 
+export function TimelineCard({
+  el,
+  mobile,
+  first,
+  last,
+  callback,
+}: TimelineCardProps) {
+  const theme = useTheme();
+  const classes = useStyles(theme);
 
-export function TimelineCard({ el, mobile, first, last, callback }: TimelineCardProps) {
-    const theme = useTheme();
-    const classes = useStyles(theme);
+  const [hover, setHover] = React.useState<boolean>(false);
+  const [open, setOpen] = React.useState<boolean>(false);
 
-    const [hover, setHover] = React.useState<boolean>(false);
-    const [open, setOpen] = React.useState<boolean>(false);
+  function onEnter() {
+    setHover(true);
+    callback(el.skills ?? [""]);
+  }
 
-    function onEnter() {
-        setHover(true);
-        callback(el.skills ?? [""]);
-    }
+  function onLeave() {
+    setHover(false);
+    callback([]);
+  }
+  const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
+  const isTablet = useMediaQuery({ query: "(max-width: 600px)" }); 
 
-    function onLeave() {
-        setHover(false);
-        callback([]);
-    }
-    return (
-        <TimelineItem>
-            <TimelineOppositeContent style={{ flex: mobile ? 0 : 0, padding: mobile ? 0 : "6px 16px" }}>
-            </TimelineOppositeContent>
-            <TimelineSeparator>
-                {!first && <TimelineConnector />}
-                <TimelineDot className={classes.dot}>
-                    <el.icon style={{ height: "2.5rem", width: "2.5rem", margin: "0.5rem" }} />
-                </TimelineDot>
-                {!last && <TimelineConnector />}
-            </TimelineSeparator>
-            <FadeInTimeline>
-                <TimelineContent className={mobile ? "" : ""} style={{ padding: mobile ? 0 : "6px 16px" }} >
-                    <Typography align="left"
-                        variant="body2"
-                        style={{ padding: "1rem 0 0 0.5rem", color: theme.palette.text.primary }}
+  return (
+    <TimelineItem>
+      <TimelineOppositeContent
+        style={{ flex: mobile ? 0 : 0, padding: mobile ? 0 : "6px 16px" }}
+      ></TimelineOppositeContent>
+      <TimelineSeparator>
+        {!first && <TimelineConnector />}
+        <TimelineDot className={classes.dot}>
+          <el.icon
+            style={{ height: "2.5rem", width: "2.5rem", margin: "0.5rem" }}
+          />
+        </TimelineDot>
+        {!last && <TimelineConnector />}
+      </TimelineSeparator>
+      <FadeInTimeline>
+        <TimelineContent
+          className={mobile ? "" : ""}
+          style={{ padding: mobile ? 0 : "6px 16px" }}
+        >
+          <Typography
+            align="left"
+            variant="body2"
+            style={{
+              padding: "1rem 0 0 0.5rem",
+              color: theme.palette.text.primary,
+            }}
+          >
+            {el.date}
+          </Typography>
+
+          <Paper
+            className={[classes.paper, hover ? classes.hover : ""].join(" ")}
+            style={{ width: mobile ? "auto" : "30vw"}}
+            onMouseEnter={onEnter}
+            onMouseLeave={onLeave}
+            elevation={5}
+          >
+            <Box display="flex" flexDirection="row" margin={0}>
+              <Box
+                padding="0.25rem 0.5rem"
+                style={{ verticalAlign: "top", width: "100%"}}
+              >
+                <Typography
+                  display={mobile ? "initial" : "inline"}
+                  variant="h5"
+                  style={{ margin: "0 0.5rem 0 0.5rem" }}
+                >
+                  {el.title}
+                </Typography>
+                <Typography
+                  display="inline"
+                  variant="body1"
+                  style={{
+                    margin: "0 0.5rem 0 0.5rem",
+                    color: theme.palette.primary.dark,
+                  }}
+                >
+                  {el.company}
+                </Typography>
+                <Typography
+                  variant="subtitle1"
+                  style={{ padding: "0rem 0 0 0.5rem" }}
+                >
+                  {el.shorttext}
+                </Typography>
+                  {!isTablet && <Box className={classes.fullText}>{el.fulltext}</Box>}
+                {
+                isMobile && !isTablet && 
+                <>
+                  <Divider
+                    orientation="horizontal"
+                    style={{
+                      backgroundColor: "#888",
+                      height: "1px",
+                      marginBottom: "8px",
+                    }}
+                  />
+
+                  <Box display="flex" flexDirection="column">
+                    <Box
+                      display="flex"
+                      flexDirection="row"
+                      justifyContent="space-evenly"
+                      flexWrap="wrap"
                     >
-                        {el.date}
-                    </Typography>
+                      {el.skills?.map((el, idx) => (
+                        <Typography
+                          display="initial"
+                          key={idx}
+                          variant="button"
+                          style={{ padding: "0 0.5rem" }}
+                        >
+                          {el}
+                        </Typography>
+                      ))}
+                    </Box>
+                  </Box>
+                </>
+                }
 
+
+              </Box>
+              {isTablet && 
+              <>
+                <Divider orientation="vertical" flexItem />
+                <Button
+                  size="small"
+                  style={{ minWidth: "2rem" }}
+                  onClick={() => {
+                    setOpen(true);
+                  }}
+                >
+                  <Box
+                    display="flex"
+                    flexDirection="vertical"
+                    alignItems="center"
+                    justifyItems="center"
+                  >
+                    <ArrowForwardIosIcon
+                      style={{ color: theme.palette.primary.main }}
+                    />
+                  </Box>
+                </Button>
+                <Modal
+                  open={open}
+                  onClose={() => {
+                    setOpen(false);
+                  }}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                  closeAfterTransition
+                >
+                  <Fade in={open}>
                     <Paper
-                        className={[classes.paper, hover ? classes.hover : ''].join(' ')}
-                        style={{ width: mobile ? "auto" : "30vw" }}
-                        onMouseEnter={onEnter}
-                        onMouseLeave={onLeave}
-                        elevation={5}
+                      className={classes.modalPaper}
+                      elevation={10}
+                      style={{
+                        position: "relative",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        overflowY: "scroll"
+                      }}
                     >
-                        <Box display="flex" flexDirection="row" margin={0}>
-                            {/* <Box margin="0rem 0 0 0.5rem" padding="0.25rem" style={{ backgroundColor: theme.palette.primary.main, height: "fit-content" }}>
-                            </Box> */}
-                            <Box padding="0.25rem 0.5rem" style={{ verticalAlign: "top", width: "100%" }}>
-                                <Typography display={mobile ? "initial" : "inline"} variant="h5" style={{ margin: "0 0.5rem 0 0.5rem" }}>
-                                    {el.title}
-                                </Typography>
-                                <Typography display="inline" variant="body1" style={{ margin: "0 0.5rem 0 0.5rem", color: theme.palette.primary.dark }}>
-                                    {el.company}
-                                </Typography>
-                                <Typography variant="subtitle1" style={{ padding: "0rem 0 0 0.5rem" }}>
-                                    {el.shorttext}
-                                </Typography>
-                                <Hidden xsDown>
-                                    <Box className={classes.fullText}>
-                                        {el.fulltext}
-                                    </Box>
-                                </Hidden>
-                                <Hidden xsDown lgUp>
-                                    <Divider orientation="horizontal" style={{ backgroundColor: theme.palette.primary.main, height: "0.5px" }} />
-
-                                    <Box display="flex" flexDirection="column">
-                                        <Typography variant="h6" align="center" style={{ margin: "0.5rem" }}>
-                                            Skills
-                                        </Typography>
-                                        <Box display="flex" flexDirection="row" justifyContent="space-evenly" flexWrap="wrap">
-                                            {el.skills?.map((el, idx) => (<Typography display="initial" key={idx} variant="button" style={{ padding: "0 0.5rem" }}>
-                                                {el}
-                                            </Typography>))}
-                                        </Box>
-                                    </Box>
-                                </Hidden>
-                            </Box>
-                            <Hidden smUp>
-                                <Divider orientation="vertical" flexItem />
-                                <Button size="small" style={{ minWidth: "2rem" }} onClick={() => { setOpen(true) }}>
-                                    <Box display="flex" flexDirection="vertical" alignItems="center" justifyItems="center">
-                                        <ArrowForwardIosIcon style={{ color: theme.palette.primary.main }} />
-                                    </Box>
-                                </Button>
-                                <Modal
-                                    open={open}
-                                    onClose={() => { setOpen(false) }}
-                                    aria-labelledby="modal-modal-title"
-                                    aria-describedby="modal-modal-description"
-                                    closeAfterTransition
-                                >
-                                    <Fade in={open}>
-                                        <Paper className={classes.modalPaper} elevation={10} style={{ position: "relative", top: "50%", transform: "translateY(-50%)" }}
-                                        >
-                                            <Box display="flex" flexDirection="row" justifyContent="space-between" paddingBottom="0.5rem">
-                                                <Typography display={"inline"} variant="h5" >
-                                                    {el.title}
-                                                </Typography>
-                                                <Typography display="inline" variant="h5" align="right" style={{ color: theme.palette.primary.dark }}>
-                                                    {el.company}
-                                                </Typography>
-                                            </Box>
-                                            <Typography variant="subtitle2">
-                                                {el.shorttext}
-                                            </Typography>
-                                            <Box display="flex" flexDirection="column" justifyContent="space-between" height="90%">
-                                                <Box className={classes.fullText} style={{ margin: 0 }}>
-                                                    {el.fulltext}
-                                                </Box>
-                                                <Divider orientation="horizontal" style={{ backgroundColor: theme.palette.primary.main }} />
-
-                                                <Box display="flex" flexDirection="row" justifyContent="space-evenly" flexWrap="wrap" padding={mobile ? "0.5rem 0.25rem" : "1rem"}>
-                                                    {el.skills?.map((el, idx) => (<Typography display="initial" key={idx} variant="button" style={{ fontSize: "small", padding: mobile ? "0 0.1rem" : "0 0.25rem" }}>
-                                                        {el}
-                                                    </Typography>))}
-                                                </Box>
-                                            </Box>
-
-                                        </Paper>
-                                    </Fade>
-                                </Modal>
-                            </Hidden>
+                      <Box
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        paddingBottom="0.5rem"
+                      >
+                        <Typography display={"inline"} variant="h5">
+                          {el.title}
+                        </Typography>
+                        <Typography
+                          display="inline"
+                          variant="h5"
+                          align="right"
+                          style={{ color: theme.palette.primary.dark }}
+                        >
+                          {el.company}
+                        </Typography>
+                      </Box>
+                      <Typography variant="subtitle2">
+                        {el.shorttext}
+                      </Typography>
+                      <Box
+                        display="flex"
+                        flexDirection="column"
+                        justifyContent="space-between"
+                        height="90%"
+                      >
+                        <Box className={classes.fullText} style={{ margin: 0 }}>
+                          {el.fulltext}
                         </Box>
+                        <Divider
+                          orientation="horizontal"
+                          style={{
+                            backgroundColor: theme.palette.primary.main,
+                          }}
+                        />
+
+                        <Box
+                          display="flex"
+                          flexDirection="row"
+                          justifyContent="space-evenly"
+                          flexWrap="wrap"
+                          padding={mobile ? "0.5rem 0.25rem" : "1rem"}
+                        >
+                          {el.skills?.map((el, idx) => (
+                            <Typography
+                              display="initial"
+                              key={idx}
+                              variant="button"
+                              style={{
+                                fontSize: "small",
+                                padding: mobile ? "0 0.1rem" : "0 0.25rem",
+                              }}
+                            >
+                              {el}
+                            </Typography>
+                          ))}
+                        </Box>
+                      </Box>
                     </Paper>
-                </TimelineContent>
-            </FadeInTimeline >
-        </TimelineItem >)
+                  </Fade>
+                </Modal>
+              </>
+}
+
+            </Box>
+          </Paper>
+        </TimelineContent>
+      </FadeInTimeline>
+    </TimelineItem>
+  );
 }
