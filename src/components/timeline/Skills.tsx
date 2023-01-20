@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   holderBox: {
     position: "sticky",
     height: "100vh",
-    top: "3rem",
+    top: "0",
   },
   skillBox: {
     display: "flex",

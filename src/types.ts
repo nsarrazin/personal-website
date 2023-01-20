@@ -16,3 +16,6 @@ export interface Project {
   button: string;
   image: string;
 }
+
+
+export type Categories =  "rocket" | "computer" | "trumpet";

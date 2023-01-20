@@ -6,6 +6,8 @@ import { SideWidgetLanding } from "./SideWidgetLanding";
 import { FadeInText } from "../../utils/animations";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { scrollTo } from "../../utils/helpers";
+import { Categories } from "../../types";
+import { Background } from "./Background";
 const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
@@ -13,14 +15,14 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: 0,
     flexDirection: "column",
     justifyContent: "space-between",
-    margin: 'auto'
+    margin: 'auto',
+    zIndex: 5,
   },
   textBox: {
     display: "flex",
     flexDirection: "column",
     flexGrow: 0,
     color: theme.palette.text.primary,
-    marginTop: "5vh",
     flexBasis: "0px",
   },
   nextButton: {
@@ -28,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
     width: "60px",
     height: "60px",
     backgroundColor: theme.palette.background.paper,
-    marginTop: "2.5rem",
   },
 }));
 
@@ -43,8 +44,14 @@ export function LandingPage({ refProp, next }: LandingPageProps) {
 
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const isTablet = useMediaQuery({ query: "(max-width: 600px)" });
+
+  const [focus, setFocus] = React.useState<Categories>("computer")
+
   return (
-    <div ref={refProp}>
+    <>
+     <Background setFocus={setFocus} />
+
+    <div ref={refProp} style={{pointerEvents: 'none'}}>
       <Box className={classes.container}>
         <div
           className={classes.textBox}
@@ -52,13 +59,13 @@ export function LandingPage({ refProp, next }: LandingPageProps) {
             marginTop: isMobile ? "3rem" : "5rem",
             marginBottom: "5rem",
           }}
-        >
+          >
           <FadeInText delay={0}>
             <Typography
               variant="h1"
               display="inline"
               style={{ letterSpacing: isMobile ? "0.07em" : "0.05em" }}
-            >
+              >
               Hey! I'm{" "}
             </Typography>
             <Typography
@@ -68,7 +75,7 @@ export function LandingPage({ refProp, next }: LandingPageProps) {
                 fontFamily: "Londrina Solid",
                 letterSpacing: isMobile ? "0.07em" : "0.05em",
               }}
-            >
+              >
               Nathan.
             </Typography>
             <Typography
@@ -84,28 +91,30 @@ export function LandingPage({ refProp, next }: LandingPageProps) {
         <div
           className={classes.textBox}
           style={{ marginTop: isTablet ? "2rem" : "10rem" }}
-        >
-          <SideWidgetLanding />
+          >
+          <SideWidgetLanding focus={focus}/>
         </div>
         <Box
           style={{
             alignSelf: "center",
             position: "absolute",
-            bottom: isTablet ? "4rem" : "10rem",
+            bottom: isTablet ? "4rem" : "6rem",
           }}
-        >
+          >
           <FadeInText delay={2}>
             <Button
               className={classes.nextButton + " floating "}
               variant="outlined"
               onClick={() => scrollTo(next)}
-            >
+              style={{pointerEvents: 'auto'}}
+              >
               <KeyboardArrowDownIcon style={{ fontSize: "3rem" }} />
             </Button>
           </FadeInText>
         </Box>
       </Box>
     </div>
+              </>
   );
 }
 

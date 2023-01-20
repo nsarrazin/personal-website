@@ -22,7 +22,7 @@ export function TimelineWidget({ els, callback }: TimelineWidgetProps) {
       margin={0}
       padding={0}
       paddingBottom={5}
-      style={{ backgroundColor: theme.palette.background.paper }}
+      style={{ backgroundColor: theme.palette.background.default }}
     >
       <Typography
         variant="h2"

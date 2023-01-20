@@ -32,11 +32,11 @@ const useStyles = makeStyles((theme) => ({
     padding: "2px",
     minWidth: "50vw",
     width: "100%",
-    backgroundColor: "#777",
+    backgroundColor: theme.palette.background.paper,
     borderRadius: "0.25rem",
     borderStyle: "solid",
     borderWidth: "2px",
-    borderColor: "#777",
+    borderColor: theme.palette.background.paper,
     transition: "border-color 0.3s",
     transitionTimingFunction: "ease-out",
     boxSizing: "border-box",
@@ -110,7 +110,7 @@ export function TimelineCard({
         >
           <Typography
             align="left"
-            variant="body2"
+            variant="body1"
             style={{
               padding: "1rem 0 0 0.5rem",
               color: theme.palette.text.primary,
@@ -140,7 +140,7 @@ export function TimelineCard({
                 </Typography>
                 <Typography
                   display="inline"
-                  variant="body1"
+                  variant="h6"
                   style={{
                     margin: "0 0.5rem 0 0.5rem",
                     color: theme.palette.primary.dark,

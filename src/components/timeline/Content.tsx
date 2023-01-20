@@ -17,7 +17,7 @@ let Content: Array<ElementTimeline> = [
                 <li style={{listStyleType:'none', marginLeft:"20px", marginTop:"-10px"}}>
                     <ul>
                     <li className="bullet">Lead the front-end effort to rewrite the flagship product of the company, used by 1000+ users, decreasing time to First Contentful Paint (FCP) by 80% to below 1s</li>
-                    <li className="bullet">Delivered new onboarding wizards resulting in 50% less manual work for onboarding new users</li>
+                    <li className="bullet">Delivered new onboarding wizards removing pain points for customer success team</li>
                     <li className="bullet">Teamed up with designers & product owners to shape work packages using Shape Up,  then delivered features using React and TypeScript with a Django backend.</li>
                     <li className="bullet">Advocated for front-end best practices within the team, through pair programming and reviews</li>
                     </ul>

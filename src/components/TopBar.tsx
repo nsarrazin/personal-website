@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     padding:"0.5rem 0 ",
     height: "2rem",
     color: theme.palette.primary.main,
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: 'rgba(0,0,0,0)',
     zIndex: 99,
     justifyContent: "space-between",
     alignItems: "center",
@@ -77,7 +77,7 @@ function TopBar(props: TopBarProps) {
       style={{
         backgroundColor: scrolled
           ? theme.palette.primary.main
-          : theme.palette.background.default,
+          : 'rgba(0,0,0,0)',
         color: scrolled
           ? theme.palette.background.paper
           : theme.palette.primary.main,

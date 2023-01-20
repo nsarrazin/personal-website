@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignContent: "center",
     padding: "0.5rem",
+    pointerEvents: 'auto'
   },
 }));
 
@@ -34,7 +35,7 @@ export function SelectableIcon(props: SelectableIconProps) {
       <Paper
         onClick={props.callback}
         className={classes.paper}
-        style={{ transform: props.active ? "scale(1.15)" : "scale(1)" }}
+        style={{ transform: props.active ? "scale(1.15)" : "scale(1)"}}
       >
         <IconButton size="medium">
           <props.icon fill={color} stroke={color}  width="3.5rem" height="3.5rem" />

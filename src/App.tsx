@@ -71,12 +71,15 @@ function App() {
         timelineRef={timeline}
         projectRef={projects}
       />
-        <Page transparent>
-          <LandingPage refProp={landing} next={timeline} />
-        </Page>
+      <Page>
+        <LandingPage refProp={landing} next={timeline} />
+      </Page>
+      <Page>
         <TimelinePage refProp={timeline} />
+      </Page>
+      <Page>
         <ProjectPage refProp={projects} />
-        <Background />
+      </Page>
     </ThemeProvider>
   );
 }

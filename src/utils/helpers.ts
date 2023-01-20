@@ -1,10 +1,11 @@
 import React, { useState, useEffect, RefObject } from "react";
 
 export function scrollTo(ref: RefObject<any>) {
-  window.scroll({
-    top: ref.current.offsetTop,
-    behavior: "smooth",
-  });
+    ref.current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
+    });
 }
 
 export function useOnScreen(ref: RefObject<any>, rootMargin = "0px") {
