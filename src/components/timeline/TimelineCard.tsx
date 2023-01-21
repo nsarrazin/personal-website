@@ -27,23 +27,22 @@ const useStyles = makeStyles((theme) => ({
     borderWidth: "2px",
     borderStyle: "solid",
   },
-  paper: {
+  paper: {  
     margin: "0.1rem 0.5rem 0.5rem 0.5rem",
     padding: "2px",
     minWidth: "50vw",
     width: "100%",
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "#777",
     borderRadius: "0.25rem",
     borderStyle: "solid",
     borderWidth: "2px",
-    borderColor: theme.palette.background.paper,
+    borderColor: "#777",
     transition: "border-color 0.3s",
     transitionTimingFunction: "ease-out",
     boxSizing: "border-box",
   },
   fullText: {
     padding: "0 1rem",
-    fontSize: "100%",
   },
   hover: {
     borderColor: theme.palette.primary.main,
@@ -98,19 +97,18 @@ export function TimelineCard({
         {!first && <TimelineConnector />}
         <TimelineDot className={classes.dot}>
           <el.icon
-            style={{ height: "2.5rem", width: "2.5rem", margin: "0.5rem" }}
+            style={{ height: isTablet ? "1rem" : "2.5rem", width: isTablet ? "1rem" : "2.5rem", margin: "0.25rem" }}
           />
         </TimelineDot>
         {!last && <TimelineConnector />}
       </TimelineSeparator>
       <FadeInTimeline>
         <TimelineContent
-          className={mobile ? "" : ""}
           style={{ padding: mobile ? 0 : "6px 16px" }}
         >
           <Typography
             align="left"
-            variant="body1"
+            variant="h6"
             style={{
               padding: "1rem 0 0 0.5rem",
               color: theme.palette.text.primary,
@@ -128,19 +126,19 @@ export function TimelineCard({
           >
             <Box display="flex" flexDirection="row" margin={0}>
               <Box
-                padding="0.25rem 0.5rem"
+                padding="0.75rem 0.5rem 0 0.5rem"
                 style={{ verticalAlign: "top", width: "100%"}}
               >
                 <Typography
                   display={mobile ? "initial" : "inline"}
-                  variant="h5"
-                  style={{ margin: "0 0.5rem 0 0.5rem" }}
+                  variant="h4"
+                  style={{ margin: "0 0.5rem 0 0.5rem", fontWeight:600 }}
                 >
                   {el.title}
                 </Typography>
                 <Typography
                   display="inline"
-                  variant="h6"
+                  variant="h4"
                   style={{
                     margin: "0 0.5rem 0 0.5rem",
                     color: theme.palette.primary.dark,
@@ -148,12 +146,23 @@ export function TimelineCard({
                 >
                   {el.company}
                 </Typography>
+
+                <Divider
+                    orientation="horizontal"
+                    style={{
+                      backgroundColor: "#888",
+                      height: "1px",
+                      margin: "8px",
+                    }}
+                  />
+
                 <Typography
-                  variant="subtitle1"
-                  style={{ padding: "0rem 0 0 0.5rem" }}
+                  variant="h5"
+                  style={{ padding: "0.5rem 0 1rem 0.5rem"}}
                 >
                   {el.shorttext}
                 </Typography>
+                
                   {!isTablet && <Box className={classes.fullText}>{el.fulltext}</Box>}
                 {
                 isMobile && !isTablet && 
@@ -178,8 +187,8 @@ export function TimelineCard({
                         <Typography
                           display="initial"
                           key={idx}
-                          variant="button"
-                          style={{ padding: "0 0.5rem" }}
+                          variant="h6"
+                          style={{ padding: "0 0.5rem", fontWeight:400 }}
                         >
                           {el}
                         </Typography>
@@ -238,19 +247,19 @@ export function TimelineCard({
                         justifyContent="space-between"
                         paddingBottom="0.5rem"
                       >
-                        <Typography display={"inline"} variant="h5">
+                        <Typography display={"inline"} variant="h4">
                           {el.title}
                         </Typography>
                         <Typography
                           display="inline"
-                          variant="h5"
+                          variant="h4"
                           align="right"
                           style={{ color: theme.palette.primary.dark }}
                         >
                           {el.company}
                         </Typography>
                       </Box>
-                      <Typography variant="subtitle2">
+                      <Typography variant="body1">
                         {el.shorttext}
                       </Typography>
                       <Box
@@ -275,6 +284,7 @@ export function TimelineCard({
                           justifyContent="space-evenly"
                           flexWrap="wrap"
                           padding={mobile ? "0.5rem 0.25rem" : "1rem"}
+                          marginTop="auto"
                         >
                           {el.skills?.map((el, idx) => (
                             <Typography

@@ -24,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
   },
   skill: {
-    margin: "1rem",
+    margin: "2rem",
+    fontSize: "25px",
     transition: "all .2s ease-in-out",
   },
 }));
@@ -65,7 +66,7 @@ export function Skills({ skillList, activeSkills }: SkillsProps) {
                 transform:
                   activeSkills.length !== 0
                     ? activeSkills.includes(el)
-                      ? "scale(1.2)"
+                      ? "scale(1.1)"
                       : "scale(0.8)"
                     : "none",
                 fontWeight: activeSkills.includes(el) ? 800 : "500",

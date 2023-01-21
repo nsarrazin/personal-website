@@ -38,14 +38,14 @@ function Screen({ children, ...props }: ScreenProps) {
   return (
     <group {...props} >
       <Plane args={[1, 1, 1]} scale={[0.5, 0.5, 0.5]} position={[0.01, 0.18, -0.35]} rotation={[0, -Math.PI, 0]}>
-        <meshPhysicalMaterial emissive="#E8C79F">
+        <meshPhysicalMaterial emissive="#CFDBF5">
           <RenderTexture width={512} height={512} attach="map" anisotropy={16}>
             {children}
           </RenderTexture>
         </meshPhysicalMaterial>
       </Plane>
       <primitive object={o} position={[0, 0.2, -1]} />
-      <spotLight position={[0, 0.2, -0.5]} target={o} color={"#E8C79F"} intensity={0.5} />
+      <spotLight position={[0, 0.2, -0.5]} target={o} color={"#CFDBF5"} intensity={0.5} />
     </group>
   );
 }
@@ -54,7 +54,7 @@ function ScreenText() {
   return (
     <Screen>
       <PerspectiveCamera makeDefault manual aspect={1 / 1} position={[0, 0, 10]} />
-      <color attach="background" args={["#E8C79F"]} />
+      <color attach="background" args={["#CFDBF5"]} />
     </Screen>
   );
 }

@@ -26,7 +26,7 @@ export function Background({setFocus}:BackgroundProps) {
       <Canvas
         shadows
         dpr={[1, 1.5]}
-        camera={{ position: [-1.5, 1, 5], fov: 60, near: 1, far: 30 }}
+        camera={{fov: 70, near: 1, far: 30 }}
         eventPrefix="client"
       >
         <CanvasContent setFocus={setFocus}/>

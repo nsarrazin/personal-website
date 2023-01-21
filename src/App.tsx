@@ -6,7 +6,6 @@ import {
   ThemeProvider,
   responsiveFontSizes,
 } from "@material-ui/core";
-import { Background } from "./components/landing/Background";
 import { Page } from "./components/Page";
 import LandingPage from "./components/landing/LandingPage";
 import { TimelinePage } from "./components/timeline/TimelinePage";
@@ -54,7 +53,7 @@ let theme = createTheme({
 
 theme = responsiveFontSizes(theme, {
   breakpoints: ["xs", "sm", "md", "lg"],
-  factor: 3,
+  factor: 5,
 });
 
 function App() {

@@ -6,6 +6,9 @@ import { FadeInText } from "../../utils/animations";
 import { useMediaQuery } from "react-responsive";
 import { Stack } from "@mui/material";
 import { Categories } from "../../types";
+import { useWindowSize } from "@react-hookz/web";
+import { useScrollPosition } from "@n8tb1t/use-scroll-position";
+import chroma from "chroma-js";
 
 const useStyles = makeStyles((theme) => ({
   iconHolder: {
@@ -27,11 +30,11 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     display: "flex",
     flexDirection: "column",
-    padding: "0 3vw",
+    padding: "0 1rem",
     left: 0,
     right: 0,
     margin: 'auto',
-    bottom: "20vh"
+    bottom: "23vh"
 
   },
 }));
@@ -55,8 +58,20 @@ interface SideWidgetLandingProps {
 export function SideWidgetLanding({focus}:SideWidgetLandingProps) {
   const theme = useTheme();
   const classes = useStyles(theme);
-  const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
-  const isTablet = useMediaQuery({ query: "(max-width: 800px)" });
+
+  const {width, height} = useWindowSize();
+  const [factor, setFactor] = React.useState(0)
+
+  useScrollPosition(
+      ({ prevPos, currPos }) => {
+        setFactor(Math.min(Math.pow(-2*currPos.y/height, 0.5), 1))
+      },
+      [],
+      undefined,
+      false,
+      10
+    );
+  
 
   const activeBox = indices.findIndex((el) => (focus===el))
 
@@ -65,14 +80,14 @@ export function SideWidgetLanding({focus}:SideWidgetLandingProps) {
       <FadeInText delay={2}>
         <Box
           className={classes.textBox}
-          sx={{ alignItems: "center"}}
+          sx={{ alignItems: "center", color: chroma.interpolate("#F5E9CF", "#444", factor).hex()}}
         >
-          <Typography variant="h3" style={{ textAlign: "center" }} gutterBottom>
+          <Typography variant="h2" style={{ textAlign: "center" }} gutterBottom>
             {titles[activeBox]}
           </Typography>
           <Typography
-            variant={isTablet ? "body1" : "h6"}
-            style={{ textAlign: "justify", maxWidth: "800px"}}
+            variant={"h6"}
+            style={{ textAlign: "justify", maxWidth: "800px", padding:"0 0.25rem"}}
           >
             {subtitles[activeBox]}
           </Typography>

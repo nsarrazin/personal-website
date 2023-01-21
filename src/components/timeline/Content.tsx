@@ -25,7 +25,7 @@ let Content: Array<ElementTimeline> = [
                 <li className="bullet">Overhauled the front-end toolchain of the company, bringing in features such as TypeScript, ES6, bundling, linting and automated CI/CD</li>
                 <li className="bullet">Took ownership as a solo dev of a portfolio management project for the biggest client of the company, and delivered the app under time constraints,  helping to close new deals with the customer </li>
             </ul>,
-        shorttext: "Working as a fullstack dev for a PropTech scale-up, building features & modernizing a SaaS sustainability app for real-estate customers.",
+        shorttext: "Working for a PropTech scale-up on a SaaS sustainability webapp for real-estate customers.",
         company: "hello energy",
         date: "2022 - Now",
         icon: LocationCityIcon,
@@ -41,7 +41,7 @@ let Content: Array<ElementTimeline> = [
                 <li className="bullet">Improved the PDF report generation pipeline of the company in Python</li>
                 <li className="bullet">Participated in UX research by making mockups in Figma and testing them in a B2B setting</li>
             </ul>,
-        shorttext: "Employed part-time doing webdev, data analysis, building models and a bit of UX for an AgriTech startup.",
+        shorttext: "Worked with an AgriTech startup predicting the growth of broccolis. Some webdev, data analysis, model building and a bit of UX.",
         company: "VanBoven",
         date: "2020 - 2022",
         icon: LaptopMacIcon,
@@ -56,7 +56,7 @@ let Content: Array<ElementTimeline> = [
                 <li className="bullet">Implemented the new simulator architecture, resulting in a 25x speedup of simulations</li>
                 <li className="bullet">Test-Driven Development (TDD) with validation of the code using experimental data from NASA</li>
             </ul>,
-        shorttext: "Developed trajectory simulators for predicting rocket safety zone for my student rocketry association.",
+        shorttext: "Developed trajectory simulators for predicting rocket safety zone for a student rocketry association.",
         company: "DARE",
         date: "2018 - 2020",
         icon: RocketLaunchIcon,
@@ -67,7 +67,8 @@ let Content: Array<ElementTimeline> = [
         fulltext:
             <ul>
                 <li className="bullet">Built the interface layer to interact with a stock trading API.</li>
-                <li className="bullet">Implemented the backend used by the bot's user interface to schedule decisions.</li>
+                <li className="bullet">Implemented the backend used by the bot's user interface to schedule trading decisions.</li>
+
             </ul>,
         shorttext: "Built an interactive trading bot for a hackathon. Placed 2nd in the category.",
         company: "MLH",
@@ -80,9 +81,11 @@ let Content: Array<ElementTimeline> = [
         fulltext:
             <ul>
                 <li className="bullet">Contributed to five group projects where teamwork, clear communication and setting priorities were critical to our success.</li>
-                <li className="bullet">Wrote a Python module to analyze wearing-out of aircraft tires from noisy sensor data.</li>
+                <li className="bullet">Wrote a Python library used to analyze aircraft tire performance using interferometry.</li>
+                <li className="bullet">Wrote a Python module to analyze aircraft tire performance using interferometry.</li>
+
             </ul>,
-        shorttext: "Currently finishing my degree in Aerospace Engineering !",
+        shorttext: "Finishing my degree in Aerospace Engineering!",
         company: "TU Delft",
         date: "2017 - now",
         icon: SchoolIcon,

@@ -1,6 +1,6 @@
 import React from "react";
 import { easing } from "maath";
-import { Environment,  SpotLight, Stars, Stats } from "@react-three/drei";
+import { Backdrop, Environment,  SpotLight, Stars, Stats } from "@react-three/drei";
 import { Euler, Vector3 } from "three";
 import * as THREE from "three";
 
@@ -13,6 +13,8 @@ import { ModelWrapper } from "./ModelWrapper";
 import { Categories } from "../../../types";
 
 import { useWindowSize } from '@react-hookz/web';
+import ScrollingBackground from "./ScrollingBackground";
+
 
 function CameraRig() {
   useFrame((state, delta) => {
@@ -27,7 +29,7 @@ function CameraRig() {
       delta,
       100
     );
-    state.camera.lookAt(0, 0, 0);
+    state.camera.lookAt(0, -0.5, 0);
   });
   return null;
 }
@@ -37,13 +39,11 @@ interface CanvasContentProps{
 }
 
 const CanvasContent = ({setFocus: setStringFocus}: CanvasContentProps) => {
-  
   const rocketRef = React.useRef<THREE.Group>(null);
   const computerRef = React.useRef<THREE.Group>(null);
   const trumpetRef = React.useRef<THREE.Group>(null);
 
   const [focus, setFocus] = React.useState<React.MutableRefObject<THREE.Group|null>>(computerRef);
-
   const {width, height} = useWindowSize();
   const distanceFactor = Math.pow(Math.min(width, 1920) / 1920, 0.6)
   const scaleFactor = Math.pow(Math.min(width, 1920)/ 1920, 0.4)
@@ -71,19 +71,17 @@ const CanvasContent = ({setFocus: setStringFocus}: CanvasContentProps) => {
   
   return (
     <>
-      <Stars
+      {/* <Stars
         radius={10}
-        depth={1}
+        depth={2}
         count={5000}
         factor={1}
-        saturation={0}
         fade
-        speed={1}
-      />
+        speed={0}
+      /> */}
 
-      <color attach="background" args={["black"]} />
+      <ScrollingBackground/>
       <pointLight position={[0, 10, 0]} intensity={0.4} />
-
       <ModelWrapper
         scale={0.8*scaleFactor}
         position={new Vector3(-2.5*distanceFactor, 0, 0)}
@@ -132,8 +130,8 @@ const CanvasContent = ({setFocus: setStringFocus}: CanvasContentProps) => {
         anglePower={10} // Diffuse-cone anglePower (default: 5)
         target={focus.current ?? undefined}
       />
-
       <CameraRig />
+
       <Environment preset="night" blur={10} />
     </>
   );
