@@ -10,25 +10,31 @@ import { Page } from "./components/Page";
 import LandingPage from "./components/landing/LandingPage";
 import { TimelinePage } from "./components/timeline/TimelinePage";
 import { ProjectPage } from "./components/projects/ProjectPage";
+import chroma from "chroma-js";
+
+const PRIMARY = "#e6c89c";
+const SECONDARY = "#FF9B71";
+const BACKGROUND = "#222";
 
 let theme = createTheme({
   palette: {
     background: {
-      default: "#222",
-      paper: "#444",
+      default: BACKGROUND,
+      paper: chroma(BACKGROUND).brighten(0.5).hex(),
     },
     primary: {
-      main: "#F4E9CD",
-      dark: "#e6c89c",
-      contrastText: "#031926", //button text white instead of black
+      light : chroma(PRIMARY).brighten().hex(),
+      main: PRIMARY,
+      dark: chroma(PRIMARY).darken().hex()
     },
     secondary: {
-      main: "#C9D9E3",
-      dark: "#A1BDCE",
+      light: chroma(SECONDARY).brighten().hex(),
+      main: SECONDARY,
+      dark: chroma(SECONDARY).darken().hex()
     },
     text: {
-      primary: "#F4E9CD",
-      secondary: "#C9D9E3",
+      primary: chroma(PRIMARY).brighten(1).hex(),
+      secondary: chroma(SECONDARY).brighten(1).hex(),
     },
   },
   typography: {

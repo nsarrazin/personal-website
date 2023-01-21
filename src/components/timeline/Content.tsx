@@ -82,10 +82,8 @@ let Content: Array<ElementTimeline> = [
             <ul>
                 <li className="bullet">Contributed to five group projects where teamwork, clear communication and setting priorities were critical to our success.</li>
                 <li className="bullet">Wrote a Python library used to analyze aircraft tire performance using interferometry.</li>
-                <li className="bullet">Wrote a Python module to analyze aircraft tire performance using interferometry.</li>
-
             </ul>,
-        shorttext: "Finishing my degree in Aerospace Engineering!",
+        shorttext: "Finishing my degree in Aerospace Engineering",
         company: "TU Delft",
         date: "2017 - now",
         icon: SchoolIcon,

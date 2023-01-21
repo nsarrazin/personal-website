@@ -35,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
     margin: 'auto',
     bottom: "23vh"
-
   },
 }));
 
@@ -80,7 +79,7 @@ export function SideWidgetLanding({focus}:SideWidgetLandingProps) {
       <FadeInText delay={2}>
         <Box
           className={classes.textBox}
-          sx={{ alignItems: "center", color: chroma.interpolate("#F5E9CF", "#444", factor).hex()}}
+          sx={{ alignItems: "center", color: chroma.interpolate(theme.palette.primary.main, theme.palette.background.paper, factor).hex()}}
         >
           <Typography variant="h2" style={{ textAlign: "center" }} gutterBottom>
             {titles[activeBox]}

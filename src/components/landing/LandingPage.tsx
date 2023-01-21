@@ -22,8 +22,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     flexGrow: 0,
-    color: theme.palette.text.primary,
-    flexBasis: "0px",
+    color: theme.palette.primary.main,
+    flexBasis: "0px"
   },
   nextButton: {
     borderRadius: "1000px",

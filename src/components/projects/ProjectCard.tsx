@@ -31,6 +31,7 @@ export function ProjectCard(props: Project) {
             maxWidth: "500px",
             minWidth: "250px",
             borderRadius: "0.9rem",
+            backgroundColor: theme.palette.background.default
           }}
         >
           <Box

@@ -22,18 +22,20 @@ export function TimelineWidget({ els, callback }: TimelineWidgetProps) {
       margin={0}
       padding={0}
       paddingBottom={5}
-      style={{ backgroundColor: theme.palette.background.paper }}
+      style={{ backgroundColor: theme.palette.background.default }}
     >
       <Typography
         variant="h2"
         style={{
-          color: theme.palette.primary.dark,
-          textAlign: isMobile ? "center" : "left",
-          padding: isMobile ? "3rem 0.5rem" : "8rem 0 7rem 1rem",
+          color: theme.palette.primary.main,
+          width:  isMobile ? "90vw" : "auto",
+          margin: "auto",
+          textAlign: "center",
+          padding: isMobile ? "3rem 0.5rem" : "4rem 0",
         }}
         key={isMobile.toString()}
       >
-        {!isMobile ? "and experiences." : "Here are some things I did."}
+        {!isMobile ? "and experiences." : "My past experiences."}
       </Typography>
 
       <Timeline align="left" style={{ margin: 0 }}>

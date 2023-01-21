@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "right",
     minHeight: "100vh",
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.background.paper,
   },
   textBox: {
     display: "flex",
@@ -55,11 +55,11 @@ export function ProjectPage({ refProp }: ProjectPageProps) {
     <div ref={refProp}>
       <Box className={classes.container} sx={{ flexDirection: "column" }}>
         <div className={classes.textBox}>
-          <Typography variant="h2">
+          <Typography variant="h2" align={isMobile ? "center" : "left"}>
             And here are some of my projects.
           </Typography>
-          <Typography variant="h6" display="inline">
-            If you want to be on this list, don't hesitate to contact me!
+          <Typography variant="h6" align={isMobile ? "center" : "left"} display="inline">
+            If you want to build something with me, get in touch!
           </Typography>
         </div>
         <div
@@ -92,14 +92,14 @@ export function ProjectPage({ refProp }: ProjectPageProps) {
             ))}
           </Carousel>
         </div>
-        <Box margin="auto">
+        <Box margin="auto" marginBottom={"5rem"}>
           <Button
             variant="contained"
             color="primary"
             size="medium"
             href="https://www.linkedin.com/in/nsarrazin/"
           >
-            Get in touch !
+            Contact
           </Button>
         </Box>
       </Box>

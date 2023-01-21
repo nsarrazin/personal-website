@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, useTheme } from "@material-ui/core";
 import { useMediaQuery } from "react-responsive";
 import { TimelineWidget } from "./TimelineWidget";
 import { Skills } from "./Skills";
@@ -21,6 +21,7 @@ export function TimelinePage({ refProp }: TimelinePageProps) {
   // I have acquired over a very long career.
   // Skills that make me a nightmare for people like you.
   const [actives, setActives] = React.useState<Array<string>>([]);
+  const theme = useTheme();
 
   const arraySkills = Array.from(setOfSkills).filter(
     (el): el is string => !!el
@@ -29,7 +30,7 @@ export function TimelinePage({ refProp }: TimelinePageProps) {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
 
   return (
-    <div ref={refProp}>
+    <div ref={refProp} style={{padding: isMobile ? "0 1rem 0 0" : "0 6rem", backgroundColor: theme.palette.background.default}}>
       {!isMobile ?
       <Grid container spacing={0}>
           <Grid item lg={4}>

@@ -8,6 +8,8 @@ import {
   Button,
   Fade,
 } from "@material-ui/core";
+
+import { Stack } from "@mui/system";
 import { ElementTimeline } from "../../types";
 import TimelineItem from "@material-ui/lab/TimelineItem";
 import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
@@ -22,21 +24,20 @@ import { useMediaQuery } from "react-responsive";
 const useStyles = makeStyles((theme) => ({
   dot: {
     backgroundColor: theme.palette.background.paper,
-    color: theme.palette.primary.main,
-    borderColor: theme.palette.primary.main,
+    color: theme.palette.text.primary,
+    borderColor: theme.palette.text.primary,
     borderWidth: "2px",
     borderStyle: "solid",
   },
   paper: {  
-    margin: "0.1rem 0.5rem 0.5rem 0.5rem",
+    margin: "0.1rem 5.5rem 0.5rem 0.5rem",
     padding: "2px",
-    minWidth: "50vw",
     width: "100%",
-    backgroundColor: "#777",
+    backgroundColor: theme.palette.background.paper,
     borderRadius: "0.25rem",
     borderStyle: "solid",
     borderWidth: "2px",
-    borderColor: "#777",
+    borderColor: theme.palette.background.paper,
     transition: "border-color 0.3s",
     transitionTimingFunction: "ease-out",
     boxSizing: "border-box",
@@ -119,7 +120,6 @@ export function TimelineCard({
 
           <Paper
             className={[classes.paper, hover ? classes.hover : ""].join(" ")}
-            style={{ width: mobile ? "auto" : "30vw"}}
             onMouseEnter={onEnter}
             onMouseLeave={onLeave}
             elevation={5}
@@ -137,7 +137,6 @@ export function TimelineCard({
                   {el.title}
                 </Typography>
                 <Typography
-                  display="inline"
                   variant="h4"
                   style={{
                     margin: "0 0.5rem 0 0.5rem",
@@ -150,7 +149,7 @@ export function TimelineCard({
                 <Divider
                     orientation="horizontal"
                     style={{
-                      backgroundColor: "#888",
+                      backgroundColor: theme.palette.background.default,
                       height: "1px",
                       margin: "8px",
                     }}
@@ -170,7 +169,7 @@ export function TimelineCard({
                   <Divider
                     orientation="horizontal"
                     style={{
-                      backgroundColor: "#888",
+                      backgroundColor: theme.palette.background.default,
                       height: "1px",
                       marginBottom: "8px",
                     }}
