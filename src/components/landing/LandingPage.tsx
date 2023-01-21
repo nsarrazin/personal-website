@@ -27,9 +27,10 @@ const useStyles = makeStyles((theme) => ({
   },
   nextButton: {
     borderRadius: "1000px",
-    width: "60px",
-    height: "60px",
-    backgroundColor: theme.palette.background.paper,
+    width: "50px",
+    height: "50px",
+    minWidth: "40px",
+    backgroundColor: 'rgba(68, 68, 68, 0.5)',
   },
 }));
 
@@ -108,7 +109,7 @@ export function LandingPage({ refProp, next }: LandingPageProps) {
               onClick={() => scrollTo(next)}
               style={{pointerEvents: 'auto'}}
               >
-              <KeyboardArrowDownIcon style={{ fontSize: "3rem" }} />
+              <KeyboardArrowDownIcon style={{ fontSize: "30px" }} />
             </Button>
           </FadeInText>
         </Box>

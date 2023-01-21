@@ -45,7 +45,7 @@ const titles = [
   "And Much More !",
 ];
 const subtitles = [
-  "I build fullstack apps using modern JS frameworks and mostly Python in the backend. I love working on dataviz and other ways to make complex data understandable by humans.",
+  "I build fullstack apps using mostly a combination of TypeScript and React with Python in the backend. I love working on data visualizations and ways to make complex data understandable to humans.",
   "From rocket trajectories to modelling the growth of broccolis, I've done my share of simulations! I enjoy building models that represent complex physical systems.",
   "I have way more hobbies than I should... When I have the time I work on my own embedded electronics prototypes and I love creative coding & exploring the relationship between art and programming.",
 ];
