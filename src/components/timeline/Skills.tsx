@@ -46,7 +46,7 @@ export function Skills({ skillList, activeSkills }: SkillsProps) {
         variant="h2"
         style={{
           color: theme.palette.primary.main,
-          textAlign: "center",
+          textAlign: "right",
           padding: "4rem 0rem 4rem 0",
         }}
       >

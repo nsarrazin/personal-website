@@ -30,8 +30,8 @@ export function TimelineWidget({ els, callback }: TimelineWidgetProps) {
           color: theme.palette.primary.main,
           width:  isMobile ? "90vw" : "auto",
           margin: "auto",
-          textAlign: "center",
-          padding: isMobile ? "3rem 0.5rem" : "4rem 0",
+          textAlign: isMobile ? "center" : "left",
+          padding: isMobile ? "3rem 0.5rem" : "4rem 0 0 1rem",
         }}
         key={isMobile.toString()}
       >

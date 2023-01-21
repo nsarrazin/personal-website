@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     flexGrow: 0,
-    color: theme.palette.primary.main,
+    color: theme.palette.primary.light,
     flexBasis: "0px"
   },
   nextButton: {
@@ -75,9 +75,10 @@ export function LandingPage({ refProp, next }: LandingPageProps) {
               style={{
                 fontFamily: "Londrina Solid",
                 letterSpacing: isMobile ? "0.07em" : "0.05em",
+                color: theme.palette.primary.main
               }}
               >
-              Nathan.
+              Nathan
             </Typography>
             <Typography
               variant="h1"
