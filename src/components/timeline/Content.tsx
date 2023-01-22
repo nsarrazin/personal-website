@@ -29,7 +29,7 @@ let Content: Array<ElementTimeline> = [
         company: "hello energy",
         date: "2022 - Now",
         icon: LocationCityIcon,
-        skills: ["Python", "React", "JavaScript", "TypeScript", "CI/CD", "Docker", "AWS", "Django", "Figma", "HTML/CSS", "Webpack"]
+        skills: ["Python", "React", "JavaScript", "TypeScript", "CI/CD", "Docker", "AWS", "Django", "Figma", "HTML", "CSS", "Webpack", "ShapeUp", "SCSS"]
     },
 
     {
@@ -45,7 +45,7 @@ let Content: Array<ElementTimeline> = [
         company: "VanBoven",
         date: "2020 - 2022",
         icon: LaptopMacIcon,
-        skills: ["Python", "React", "JavaScript", "TypeScript", "CI/CD", "Docker", "UI/UX", "Figma", "HTML/CSS", "pandas"]
+        skills: ["Python", "React", "TypeScript", "CI/CD", "Docker", "UI/UX", "Figma", "HTML", "CSS", "pandas", "Scrum"]
     },
     {
         title: "Simulations Engineer",
@@ -60,7 +60,7 @@ let Content: Array<ElementTimeline> = [
         company: "DARE",
         date: "2018 - 2020",
         icon: RocketLaunchIcon,
-        skills: ["Python", "Numpy", "Numba", "matplotlib", "plotly", "Qt5"]
+        skills: ["Python", "Numpy", "matplotlib",  "Qt5", "TDD"]
     },
     {
         title: "HackDelft 2019",
@@ -74,7 +74,7 @@ let Content: Array<ElementTimeline> = [
         company: "MLH",
         date: "May 2019",
         icon: CoffeeIcon,
-        skills: ["Python", "HTML/CSS", "JavaScript"]
+        skills: ["Python", "HTML", "CSS", "TypeScript"]
     },
     {
         title: "BSc. Aerospace Engineering",
@@ -101,7 +101,7 @@ let Content: Array<ElementTimeline> = [
         company: "France",
         date: "2015",
         icon: SettingsIcon,
-        skills: ["Python", "Arduino"]
+        skills: ["Python", "Arduino", "Qt5"]
     },
 
 ]

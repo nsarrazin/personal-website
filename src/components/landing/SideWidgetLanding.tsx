@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 const titles = [
   "Web Development",
   "Simulations Engineering",
-  "And Much More !",
+  "And Much More!",
 ];
 const subtitles = [
   "I build fullstack apps using mostly a combination of TypeScript and React with Python in the backend. I love working on data visualizations and ways to make complex data understandable to humans.",
