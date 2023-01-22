@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.main,
     boxShadow: "0 10px 10px rgb(0 0 0 / 0.3)",
     margin: "1rem",
+    marginTop: "0"
   },
   holderBox: {
     position: "sticky",

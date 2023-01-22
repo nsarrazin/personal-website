@@ -22,12 +22,13 @@ export function ProjectCard(props: Project) {
           borderStyle: "solid",
           borderWidth: "2px",
           overflow: "unset",
+          height: "50vh"
         }}
       >
         <Paper
           style={{
             width: "50vw",
-            height: "50vh",
+            height: "100%",
             maxWidth: "500px",
             minWidth: "250px",
             borderRadius: "0.9rem",
@@ -51,19 +52,18 @@ export function ProjectCard(props: Project) {
               }}
             />
             <CardContent style={{ flexGrow: 1 }}>
-              <Typography gutterBottom variant="h3" component="div">
+              <Typography gutterBottom variant="h4" component="div" style={{fontWeight: 800}} align="center">
                 {props.title}
               </Typography>
               <Typography
-                variant="h6"
+                variant="body1"
                 style={{ color: theme.palette.text.primary }}
               >
                 {props.text}
               </Typography>
             </CardContent>
-            <CardActions>
               <Button
-                style={{ margin: "auto" }}
+                style={{ margin: "auto", marginBottom:"2rem" }}
                 variant="outlined"
                 size="small"
                 disabled={props.href === ""}
@@ -71,7 +71,6 @@ export function ProjectCard(props: Project) {
               >
                 {props.button}
               </Button>
-            </CardActions>
           </Box>
         </Paper>
       </Card>

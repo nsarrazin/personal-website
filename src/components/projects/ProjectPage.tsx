@@ -71,7 +71,7 @@ export function ProjectPage({ refProp }: ProjectPageProps) {
         >
           <Carousel
             sx={{
-              height: "60vh",
+              height: "70vh",
               width: isMobile ? "100%" : "75vw",
               maxWidth: "650px",
               margin: "auto",
@@ -96,8 +96,12 @@ export function ProjectPage({ refProp }: ProjectPageProps) {
           <Button
             variant="contained"
             color="primary"
-            size="medium"
+            size="large"
             href="https://www.linkedin.com/in/nsarrazin/"
+            style={{
+              fontWeight:'600',
+              fontSize: '1rem'
+            }}
           >
             Contact
           </Button>

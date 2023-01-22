@@ -3,7 +3,7 @@ import { Project } from "../../types";
 export const Projects: Array<Project> = [
   {
     title: "ODESSA",
-    text: "A trajectory simulator for rocketry, leveraging LLVM compiling for faster simulations. It was built with modularity in mind to support all operations within DARE. (Different engines, bodies, parachutes, etc.)",
+    text: "A trajectory simulator for rocketry, leveraging LLVM for peformance. It was built with modularity in mind to support all operations within DARE.",
     href: "https://github.com/nsarrazin/odessa",
     button: "Open on GitHub",
     image: "./img/odessa.png",
@@ -17,7 +17,7 @@ export const Projects: Array<Project> = [
   },
   {
     title: "ProfiloPy",
-    text: "A Python package developed to analyze raw profilometer data of aircraft tires, with the goal of measuring tire wear over time.",
+    text: "A Python package developed to analyze profilometer data of aircraft tires, with the goal of measuring tire wear over time.",
     href: "https://github.com/nsarrazin/ProfiloPy",
     button: "Open on GitHub",
     image: "./img/profilopy.png",
