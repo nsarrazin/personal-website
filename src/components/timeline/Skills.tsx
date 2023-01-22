@@ -25,8 +25,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
   },
   skill: {
-    margin: "1rem",
-    fontSize: "25px",
+    margin: "1.5rem",
     transition: "all .2s ease-in-out",
   },
 }));
@@ -57,20 +56,20 @@ export function Skills({ skillList, activeSkills }: SkillsProps) {
           {skillList.map((el, idx) => (
             <Typography
               key={idx}
-              variant="h6"
+              variant="h5"
               className={classes.skill}
               style={{
                 color:
                   activeSkills.includes(el) || activeSkills.length === 0
                     ? theme.palette.background.paper
                     : theme.palette.primary.dark,
-                transform:
-                  activeSkills.length !== 0
-                    ? activeSkills.includes(el)
-                      ? "scale(1.2)"
-                      : "scale(0.8)"
-                    : "none",
-                fontWeight: activeSkills.includes(el) ? 800 : 500,
+                // transform:
+                  // activeSkills.length !== 0
+                  //   ? activeSkills.includes(el)
+                  //     ? "scale(1.2)"
+                  //     : "scale(0.8)"
+                  //   : "none",
+                fontWeight: activeSkills.includes(el) ? 800 : 400,
               }}
             >
               {el}

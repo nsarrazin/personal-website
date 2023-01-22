@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     padding:"0.5rem 0 ",
     height: "2rem",
-    color: theme.palette.primary.main,
     backgroundColor: 'rgba(0,0,0,0)',
     zIndex: 99,
     justifyContent: "space-between",
@@ -80,7 +79,7 @@ function TopBar(props: TopBarProps) {
           : 'rgba(0,0,0,0)',
         color: scrolled
           ? theme.palette.background.paper
-          : theme.palette.primary.main,
+          : theme.palette.text.primary,
         borderRadius: 0,
       }}
       elevation={scrolled ? 5 : 0}
@@ -96,8 +95,8 @@ function TopBar(props: TopBarProps) {
                 style={{
                   color: scrolled
                     ? theme.palette.background.paper
-                    : theme.palette.primary.main,
-                }}
+                    : theme.palette.text.primary,
+                  }}
                 onClick={() =>
                   window.scroll({
                     top: 0,
@@ -111,8 +110,8 @@ function TopBar(props: TopBarProps) {
                 style={{
                   color: scrolled
                     ? theme.palette.background.paper
-                    : theme.palette.primary.main,
-                }}
+                    : theme.palette.text.primary,
+                  }}
                 onClick={() => scrollTo(props.timelineRef)}
               >
                 Resume
@@ -121,8 +120,8 @@ function TopBar(props: TopBarProps) {
                 style={{
                   color: scrolled
                     ? theme.palette.background.paper
-                    : theme.palette.primary.main,
-                }}
+                    : theme.palette.text.primary,
+                  }}
                 onClick={() => scrollTo(props.projectRef)}
               >
                 Projects
@@ -151,8 +150,8 @@ function TopBar(props: TopBarProps) {
               padding: "0 1rem",
               color: scrolled
                 ? theme.palette.background.paper
-                : theme.palette.primary.main,
-            }}
+                : theme.palette.text.primary,
+              }}
           >
             <LinkedIn style={styles.largeIcon} />
           </IconButton>
@@ -167,8 +166,8 @@ function TopBar(props: TopBarProps) {
               padding: "0 1rem",
               color: scrolled
                 ? theme.palette.background.paper
-                : theme.palette.primary.main,
-            }}
+                : theme.palette.text.primary,
+              }}
             aria-label="github"
             color="primary"
           >
@@ -185,8 +184,8 @@ function TopBar(props: TopBarProps) {
               padding: "0 1rem",
               color: scrolled
                 ? theme.palette.background.paper
-                : theme.palette.primary.main,
-            }}
+                : theme.palette.text.primary,
+              }}
             aria-label="mailto"
             color="primary"
           >

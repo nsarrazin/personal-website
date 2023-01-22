@@ -51,11 +51,11 @@ export function ProjectCard(props: Project) {
               }}
             />
             <CardContent style={{ flexGrow: 1 }}>
-              <Typography gutterBottom variant="h4" component="div">
+              <Typography gutterBottom variant="h3" component="div">
                 {props.title}
               </Typography>
               <Typography
-                variant="body1"
+                variant="h6"
                 style={{ color: theme.palette.text.primary }}
               >
                 {props.text}

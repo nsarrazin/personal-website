@@ -81,11 +81,11 @@ export function SideWidgetLanding({focus}:SideWidgetLandingProps) {
           className={classes.textBox}
           sx={{ alignItems: "center", color: chroma.interpolate(theme.palette.primary.main, theme.palette.background.paper, factor).hex()}}
         >
-          <Typography variant="h2" style={{ textAlign: "center" }} gutterBottom>
+          <Typography variant="h2" style={{ textAlign: "center", fontFamily: "Quicksand", color: theme.palette.text.primary }}gutterBottom>
             {titles[activeBox]}
           </Typography>
           <Typography
-            variant={"h6"}
+            variant={"h5"}
             style={{ textAlign: "justify", maxWidth: "800px", padding:"0 0.25rem"}}
           >
             {subtitles[activeBox]}

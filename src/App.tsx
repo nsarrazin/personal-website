@@ -38,8 +38,10 @@ let theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "'Quicksand', sans-serif;",
-    fontWeightRegular: 500,
+    fontFamily: "'Montserrat', sans-serif;",
+    fontWeightRegular: 400,
+    fontWeightLight: 300,
+    fontWeightBold: 600,
     fontSize: 12,
     h1: {
       fontFamily: "'Londrina Outline', cursive",
@@ -49,12 +51,15 @@ let theme = createTheme({
       fontWeight: 600,
     },
     h3: {
-      fontWeight: 500,
+      fontWeight: 400,
     },
-    h4: {fontSize:22},
+    h4: {fontWeight: 400},
     h5: {
-      fontSize: 18,
+      fontWeight: 400, 
     },
+    h6: {
+      fontWeight: 400,
+    }
   },
 });
 

@@ -246,7 +246,7 @@ export function TimelineCard({
                         justifyContent="space-between"
                         paddingBottom="0.5rem"
                       >
-                        <Typography display={"inline"} variant="h4">
+                        <Typography display={"inline"} variant="h4" style={{fontWeight:600}}>
                           {el.title}
                         </Typography>
                         <Typography

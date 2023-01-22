@@ -75,7 +75,6 @@ export function LandingPage({ refProp, next }: LandingPageProps) {
               style={{
                 fontFamily: "Londrina Solid",
                 letterSpacing: isMobile ? "0.07em" : "0.05em",
-                color: theme.palette.primary.main
               }}
               >
               Nathan
