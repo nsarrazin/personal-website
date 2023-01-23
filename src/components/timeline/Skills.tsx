@@ -76,7 +76,7 @@ export function Skills({ activeSkills }: SkillsProps) {
       </Typography>
       <Paper className={classes.paper} elevation={0}>
         {skills.map((skillList, idx) => (
-          <>
+          <div key={idx}>
             <Typography variant="h6" align="center" style={{color:theme.palette.primary.dark, fontWeight: "400", paddingTop:"1rem"}}>{skillGroups[idx]}</Typography>
             <Box className={classes.skillBox}>
               {skillList.map((el, idx) => (
@@ -89,12 +89,6 @@ export function Skills({ activeSkills }: SkillsProps) {
                       activeSkills.includes(el) || activeSkills.length === 0
                         ? theme.palette.background.paper
                         : theme.palette.primary.dark,
-                    // transform:
-                    // activeSkills.length !== 0
-                    //   ? activeSkills.includes(el)
-                    //     ? "scale(1.2)"
-                    //     : "scale(0.8)"
-                    //   : "none",
                     fontWeight: activeSkills.includes(el) ? 800 : 500,
                   }}
                 >
@@ -102,7 +96,7 @@ export function Skills({ activeSkills }: SkillsProps) {
                 </Typography>
               ))}
             </Box>
-          </>
+          </div>
         ))}
       </Paper>
     </Box>

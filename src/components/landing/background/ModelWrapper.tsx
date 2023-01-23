@@ -15,7 +15,7 @@ interface ModelWrapperProps extends ModelProps {
 }
 
 export const ModelWrapper = (props: ModelWrapperProps) => {
-  const ref = React.useRef<any>()
+  const ref = React.useRef<THREE.Group>(null)
 
   const [hover, setHover] = React.useState<boolean>(false);
   const [pos, setPos] = React.useState(new THREE.Vector3().copy(props.position as THREE.Vector3))
@@ -26,10 +26,11 @@ export const ModelWrapper = (props: ModelWrapperProps) => {
   const speed = selected ? 0.04 : 0.005
   const newScale = hover ? 1.3 : 1;
 
-  const target = selected ? new THREE.Vector3(pos.x, pos.y+0.5, pos.z): pos;
+
 
   useFrame((state) => {
       if (props.newRef?.current){
+        const target = selected ? new THREE.Vector3(pos.x, pos.y+0.5, pos.z): pos;
         // constant rotation
         props.newRef.current.rotation.y = props.newRef.current.rotation.y + speed;
 

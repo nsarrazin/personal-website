@@ -26,10 +26,11 @@ export function Background({setFocus}:BackgroundProps) {
       <Canvas
         shadows
         dpr={[1, 1.5]}
-        camera={{fov: 70, near: 1, far: 30 }}
+        camera={{fov: 70, near: 1, far: 500 }}
         eventPrefix="client"
       >
         <CanvasContent setFocus={setFocus}/>
+        <fog attach="fog" color= "#000" near={1} far={500} />
       </Canvas>
     </div>
   );

@@ -4,13 +4,10 @@ import {
   useGLTF,
   RenderTexture,
   PerspectiveCamera,
-  Text,
   Plane,
 } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import { GroupProps, useFrame, useLoader } from "@react-three/fiber";
-import { renderSVG } from './renderSVG'
-import { Euler, Vector3 } from "three";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -45,7 +42,7 @@ function Screen({ children, ...props }: ScreenProps) {
         </meshPhysicalMaterial>
       </Plane>
       <primitive object={o} position={[0, 0.2, -1]} />
-      <spotLight position={[0, 0.2, -0.5]} target={o} color={"#CFDBF5"} intensity={0.5} />
+      <spotLight position={[0, 0.2, 0]} target={o} color={"#CFDBF5"} intensity={0.2} decay={0.1}/>
     </group>
   );
 }

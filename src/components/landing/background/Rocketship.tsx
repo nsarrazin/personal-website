@@ -4,7 +4,7 @@ Command: npx gltfjsx@6.1.3 Rocketship.glb --transform -t --instance
 */
 
 import * as THREE from 'three'
-import React, { useRef } from 'react'
+import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
 import type {ModelProps} from './ModelWrapper'

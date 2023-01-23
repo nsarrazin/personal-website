@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
     padding: "0 5vw",
+    paddingTop:"3rem",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "right",
@@ -38,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
     overflowX: "scroll",
     alignSelf: "center",
     width: "100vw",
-    marginTop: "5vh",
   },
 }));
 
@@ -71,28 +71,21 @@ export function ProjectPage({ refProp }: ProjectPageProps) {
         >
           <Carousel
             sx={{
-              height: "70vh",
+              height: "100%",
               width: isMobile ? "100%" : "75vw",
               maxWidth: "650px",
               margin: "auto",
             }}
-            // fullHeightHover={true}
             autoPlay={false}
             animation="slide"
             navButtonsAlwaysVisible={!isMobile}
-            indicatorContainerProps={{
-              style: {
-                position: "absolute",
-                bottom: 0,
-              },
-            }}
           >
             {Projects.map((el, idx) => (
               <ProjectCard key={idx} {...el} />
             ))}
           </Carousel>
         </div>
-        <Box margin="auto" marginBottom={"5rem"}>
+        <Box margin="auto" marginBottom={isMobile ? "1rem" : "5rem"}>
           <Button
             variant="contained"
             color="primary"

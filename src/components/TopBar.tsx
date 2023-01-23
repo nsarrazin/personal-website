@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     top: 0,
     width: '100%',
-    padding:"0.5rem 0 ",
+    padding:"0.5rem 0.5rem",
     height: "2rem",
     backgroundColor: 'rgba(0,0,0,0)',
     zIndex: 99,
@@ -34,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
 
 const nameStyle = {
   justifySelf: "center",
-  margin: "0 0 0 0.5rem",
   fontWeight: "800",
 };
 
@@ -84,7 +83,7 @@ function TopBar(props: TopBarProps) {
       }}
       elevation={scrolled ? 5 : 0}
     >
-      <Typography variant="h5" style={nameStyle}>
+      <Typography variant="h5" style={nameStyle} >
         {isMobile ? "NSARRAZIN" : "NATHAN  SARRAZIN"}
       </Typography>
       {!isMobile && (

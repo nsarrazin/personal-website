@@ -1,6 +1,9 @@
 import React from "react";
 import { easing } from "maath";
-import { Backdrop, Environment,  SpotLight, Stars, Stats } from "@react-three/drei";
+import {
+  Environment,
+  Stars,
+} from "@react-three/drei";
 import { Euler, Vector3 } from "three";
 import * as THREE from "three";
 
@@ -12,9 +15,15 @@ import { useFrame } from "@react-three/fiber";
 import { ModelWrapper } from "./ModelWrapper";
 import { Categories } from "../../../types";
 
-import { useWindowSize } from '@react-hookz/web';
+import { useWindowSize } from "@react-hookz/web";
 import ScrollingBackground from "./ScrollingBackground";
-
+import Road from "./Road";
+import {
+  Bloom,
+  ChromaticAberration,
+  EffectComposer,
+} from "@react-three/postprocessing";
+import { useTheme } from "@material-ui/core";
 
 function CameraRig() {
   useFrame((state, delta) => {
@@ -22,7 +31,7 @@ function CameraRig() {
       state.camera.position,
       [
         (state.pointer.x * state.viewport.width) / 10,
-        (1.5 + state.pointer.y),
+        0.75 + state.pointer.y,
         6,
       ],
       0.5,
@@ -34,105 +43,117 @@ function CameraRig() {
   return null;
 }
 
-interface CanvasContentProps{
-  setFocus(val:Categories): void;
+interface CanvasContentProps {
+  setFocus(val: Categories): void;
 }
 
-const CanvasContent = ({setFocus: setStringFocus}: CanvasContentProps) => {
+const CanvasContent = ({ setFocus: setStringFocus }: CanvasContentProps) => {
   const rocketRef = React.useRef<THREE.Group>(null);
   const computerRef = React.useRef<THREE.Group>(null);
   const trumpetRef = React.useRef<THREE.Group>(null);
+  const lightRef = React.useRef<THREE.PointLight>(null);
+  const theme = useTheme();
 
-  const [focus, setFocus] = React.useState<React.MutableRefObject<THREE.Group|null>>(computerRef);
-  const {width, height} = useWindowSize();
-  const distanceFactor = Math.pow(Math.min(width, 1920) / 1920, 0.6)
-  const scaleFactor = Math.pow(Math.min(width, 1920)/ 1920, 0.4)
+  const [focus, setFocus] =
+    React.useState<React.MutableRefObject<THREE.Group | null>>(computerRef);
+  const { width } = useWindowSize();
+  const distanceFactor = Math.pow(Math.min(width, 1920) / 1920, 0.6);
+  const scaleFactor = Math.pow(Math.min(width, 1920) / 1920, 0.4);
 
-  useFrame((state) => {
-    rocketRef.current &&
-      (rocketRef.current.rotation.y = rocketRef.current.rotation.y + 0.01);
-    computerRef.current &&
-      (computerRef.current.rotation.y = computerRef.current.rotation.y + 0.01);
-    trumpetRef.current &&
-      (trumpetRef.current.rotation.y = trumpetRef.current.rotation.y + 0.01);
+  useFrame((state, delta) => {
+    if (focus === rocketRef) {
+      lightRef.current &&
+        lightRef.current.position.lerp(
+          new THREE.Vector3(-3 * 2.5 * distanceFactor, 8, -10),
+          0.1
+        );
+    } else if (focus === computerRef) {
+      lightRef.current &&
+        lightRef.current.position.lerp(new THREE.Vector3(0, 8, -10), 0.1);
+    } else if (focus === trumpetRef) {
+      lightRef.current &&
+        lightRef.current.position.lerp(
+          new THREE.Vector3(3 * 2.5 * distanceFactor, 8, -10),
+          0.1
+        );
+    } else {
+      lightRef.current &&
+        lightRef.current.position.lerp(new THREE.Vector3(0, 8, -10), 0.1);
+    }
   });
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     if (focus === rocketRef) {
-      setStringFocus("rocket") 
+      setStringFocus("rocket");
     } else if (focus === computerRef) {
-      setStringFocus("computer") 
-    } else if ( focus === trumpetRef) {
-      setStringFocus("trumpet")
+      setStringFocus("computer");
+    } else if (focus === trumpetRef) {
+      setStringFocus("trumpet");
     } else {
-      setStringFocus("computer")
+      setStringFocus("computer");
     }
-  }, [focus])
-  
+  }, [focus, setStringFocus]);
+
   return (
     <>
-      {/* <Stars
-        radius={10}
-        depth={2}
-        count={5000}
-        factor={1}
-        fade
-        speed={0}
-      /> */}
+      <Road />
+      <Stars radius={250} depth={5} count={5000} factor={2} speed={0} />
 
-      <ScrollingBackground/>
-      <pointLight position={[0, 10, 0]} intensity={0.4} />
+      <ScrollingBackground />
+      <pointLight
+        position={[0, 5, -10]}
+        intensity={1}
+        color={theme.palette.primary.main}
+        ref={lightRef}
+      />
+      <pointLight
+        position={[0, 0, 2]}
+        intensity={0.2}
+        color={theme.palette.primary.main}
+      />
       <ModelWrapper
-        scale={0.8*scaleFactor}
-        position={new Vector3(-2.5*distanceFactor, 0, 0)}
+        scale={0.8 * scaleFactor}
+        position={new Vector3(-2.5 * distanceFactor, 0, 0)}
         rotation={new Euler(Math.PI / 4, Math.PI / 2, 0)}
         newRef={rocketRef}
         focus={focus}
         model={RocketModel}
-        onClick={()=>{setFocus(rocketRef)}}
-        key={distanceFactor+ "rocket"}
+        onClick={() => {
+          setFocus(rocketRef);
+        }}
+        key={distanceFactor + "rocket"}
       />
       <ModelWrapper
-        scale={1.3*scaleFactor}
+        scale={1.3 * scaleFactor}
         position={new Vector3(0, 0, 0)}
         newRef={computerRef}
         focus={focus}
         model={CRT}
-        onClick={()=>setFocus(computerRef)}
-        key={distanceFactor+ "computer"}
-
+        onClick={() => setFocus(computerRef)}
+        key={distanceFactor + "computer"}
       />
 
       <ModelWrapper
-        scale={0.09*scaleFactor}
-        position={new Vector3(2.5*distanceFactor, 0, 0)}
+        scale={0.09 * scaleFactor}
+        position={new Vector3(2.5 * distanceFactor, 0, 0)}
         rotation={new Euler(0, 3.14 / 3, Math.PI / 4)}
         newRef={trumpetRef}
         focus={focus}
         model={Trumpet}
-        onClick={()=>setFocus(trumpetRef)}
-        key={distanceFactor+ "trumpet"}
-
-      />
-      <SpotLight
-        position={[-6, 4, 0]}
-        distance={(focus.current?.position.distanceTo(new THREE.Vector3(-6, 4, 0)) ?? 7) + 1}
-        angle={0.3}
-        attenuation={(focus.current?.position.distanceTo(new THREE.Vector3(-6, 4, 0)) ?? 7)+1}
-        anglePower={10} // Diffuse-cone anglePower (default: 5)
-        target={focus.current ?? undefined}
-      />
-        <SpotLight
-        position={[6, 4, 0]}
-        distance={(focus.current?.position.distanceTo(new THREE.Vector3(6, 4, 0)) ?? 7) + 1}
-        angle={0.3}
-        attenuation={(focus.current?.position.distanceTo(new THREE.Vector3(6, 4, 0)) ?? 7) + 1}
-        anglePower={10} // Diffuse-cone anglePower (default: 5)
-        target={focus.current ?? undefined}
+        onClick={() => setFocus(trumpetRef)}
+        key={distanceFactor + "trumpet"}
       />
       <CameraRig />
 
       <Environment preset="night" blur={10} />
+      <EffectComposer>
+        <Bloom
+          intensity={3.0} // The bloom intensity.
+          luminanceThreshold={0.6} // luminance threshold. Raise this value to mask out darker elements in the scene.
+          luminanceSmoothing={0.025} // smoothness of the luminance threshold. Range is [0, 1]
+        />
+        <ChromaticAberration offset={new THREE.Vector2(0.0005, 0.0005)} />
+      </EffectComposer>
     </>
   );
 };
