@@ -39,8 +39,8 @@ const nameStyle = {
 
 const styles = {
   largeIcon: {
-    width: "1.5rem",
-    height: "1.5rem",
+    width: "2rem",
+    height: "2rem",
     padding: 0,
   },
 };
