@@ -21,7 +21,7 @@ interface BackgroundProps{
 export function Background({setFocus}:BackgroundProps) {
   const theme = useTheme();
   const classes = useStyles(theme);
-  const [dpr, setDpr] = React.useState(0.5)
+  const [dpr, setDpr] = React.useState(0.8)
   return (
     <div className={classes.particleBox}>
       <Canvas
