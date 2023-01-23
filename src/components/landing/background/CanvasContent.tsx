@@ -3,6 +3,7 @@ import { easing } from "maath";
 import {
   Environment,
   Stars,
+  Stats,
 } from "@react-three/drei";
 import { Euler, Vector3 } from "three";
 import * as THREE from "three";
@@ -154,6 +155,7 @@ const CanvasContent = ({ setFocus: setStringFocus }: CanvasContentProps) => {
         />
         <ChromaticAberration offset={new THREE.Vector2(0.0005, 0.0005)} />
       </EffectComposer>
+      {/* <Stats/> */}
     </>
   );
 };
