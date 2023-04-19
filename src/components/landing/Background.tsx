@@ -31,7 +31,7 @@ export function Background({ setFocus }: BackgroundProps) {
         eventPrefix="client"
       >
         <PerformanceMonitor
-          onChange={(api)=>{console.log(api.factor); setDpr(api.factor)}}
+          onChange={(api)=>{setDpr(api.factor)}}
         ></PerformanceMonitor>
         <CanvasContent setFocus={setFocus} />
         <fog attach="fog" color="#000" near={1} far={500} />
