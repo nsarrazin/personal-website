@@ -153,7 +153,6 @@ const CanvasContent = ({ setFocus: setStringFocus }: CanvasContentProps) => {
           luminanceThreshold={0.6} // luminance threshold. Raise this value to mask out darker elements in the scene.
           luminanceSmoothing={0.025} // smoothness of the luminance threshold. Range is [0, 1]
         />
-        <ChromaticAberration offset={new THREE.Vector2(0.0005, 0.0005)} />
       </EffectComposer>
       {/* <Stats/> */}
     </>
